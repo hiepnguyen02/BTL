@@ -17,10 +17,9 @@ export default function Home() {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const router = useRouter();
     const handleLogin = async () => {
-
         try {
             await loginService(userLogin, setIsLoading, setError);
-            alert("Đăng nhập okie");
+            router.push("/home");
 
         } catch (error) {
             setIsLoading(false);
@@ -81,8 +80,8 @@ export default function Home() {
                 <Col md={6} className={"mt-3"}>
                     <Button variant="primary" type="submit" style={{borderRadius: 18, width: "100%"}}
                             disabled={isLoading}
-                        // onClick={handleLogin}
-                            onClick={() => router.push("/home")}>
+                            onClick={handleLogin}
+                    >
                         Đăng nhập
                     </Button>
                 </Col>
@@ -92,6 +91,15 @@ export default function Home() {
                     >
                         Chưa có tài khoản? Hãy đăng ký!
                         <Link href={"/register"}></Link>
+                    </Button>
+                </Col>
+            </Row>
+            <Row className={"mt-3"}>
+                <Col xs="6">
+                    <Button variant="outline-warning" type="button" style={{borderRadius: 18, width: "100%"}}
+                            onClick={() => router.push("/home")}
+                    >
+                        Bỏ qua tạo tài khoản - Dùng thử với một số tính năng hạn chế!
                     </Button>
                 </Col>
             </Row>

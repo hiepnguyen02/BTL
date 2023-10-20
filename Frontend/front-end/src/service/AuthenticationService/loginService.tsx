@@ -1,5 +1,6 @@
 import Config from "@/repository/config";
 import {loginRepository} from "@/repository/AuthenticationRepository/loginRepository";
+import config from "@/repository/config";
 
 export const loginService = async (user: UserLogin | null,
                                    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,

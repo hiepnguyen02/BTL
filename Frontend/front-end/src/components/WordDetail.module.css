@@ -1,0 +1,9 @@
+.speaker {
+    background-color: lightpink !important;
+    border: 0;
+}
+
+.speaker:hover {
+    background-color: pink !important;
+    border: 0
+}

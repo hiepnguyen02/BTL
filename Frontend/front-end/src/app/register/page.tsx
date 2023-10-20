@@ -1,18 +1,11 @@
 'use client'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-
 import {Button, Col, Form, Image, Alert} from "react-bootstrap";
 import loginImage from '../../img/login/login.png'
 import dictionary from '../../img/login/dictionary.png'
-import {auto} from "@popperjs/core";
 import {useState} from "react";
-import {loginService} from "@/service/AuthenticationService/loginService";
-import {loginRepository} from "@/repository/AuthenticationRepository/loginRepository";
-import {log} from "util";
 import {registerService} from "@/service/AuthenticationService/registerService";
-import {set} from "zod";
-import {router} from "next/client";
 import {useRouter} from "next/navigation";
 
 export default function Register() {
@@ -39,7 +32,6 @@ export default function Register() {
     return (
 
         <Container fluid={"lg"}>
-
             {
                 showAlert ?
                     <Row md={2} className={" justify-content-center align-items-center"}
@@ -67,7 +59,6 @@ export default function Register() {
                     <>
                         <Row className={"mt-5"}>
                             <Col>
-
                                 <img src={dictionary.src} className={"position-absolute"}
                                      style={{maxWidth: "30%"}}/>
                             </Col>

@@ -21,6 +21,13 @@ import settingsIcon from '../../img/home/settings.png'
 import bookIcon from '../../img/home/book.png'
 import editIcon from '../../img/home/edit.png'
 import userIcon from '../../img/home/user.png'
+import checkIcon from '../../img/home/check.png'
+import Calendar from "react-calendar";
+import {DateCalendar, DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
+import DictionaryTab from "@/components/dictionaryTab";
+import {TextField} from "@mui/material";
 
 export default function Page() {
     const [userRegister, setUserRegister] = useState<UserRegister | null>({
@@ -30,6 +37,7 @@ export default function Page() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [showAlert, setShowAlert] = useState<boolean>(false);
+
     const router = useRouter();
     const handleRegister = async () => {
 
@@ -63,18 +71,24 @@ export default function Page() {
                        }}>
                 <Row>
                     <Col md={9}>
-                        <Tab.Container id="left-tabs-example" defaultActiveKey="dashBoard">
+                        <Tab.Container defaultActiveKey="dictionary">
                             <Row>
                                 <Col md={3}>
+
                                     <img src={homeIcon.src} style={{marginTop: 10, width: 80}}/>
-                                    <text style={{marginLeft: 10}} className={"fw-bolder h6 font-monospace"}>Study with
+                                    <text className={"font-monospace fw-bolder"} style={{marginLeft: 10}}>Study
+                                        with
                                         me!
                                     </text>
 
                                     <Nav variant="pills" className="flex-column mt-4">
                                         <Nav.Item>
                                             <Nav.Link eventKey="dashBoard"
-                                                      style={{fontSize: 18, fontFamily: "monospace"}}>
+                                                      style={{
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+
+                                                      }}>
                                                 <img src={dashBoardIcon.src} style={{width: 30, marginRight: 10}}/>
                                                 Dashboard</Nav.Link>
                                         </Nav.Item>
@@ -99,11 +113,11 @@ export default function Page() {
 
                                     </Nav>
                                 </Col>
-                                <Col md={6}>
+                                <Col>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="dashBoard">First tab content</Tab.Pane>
                                         <Tab.Pane eventKey="translate">Second tab content</Tab.Pane>
-                                        <Tab.Pane eventKey="dictionary">Second tab content</Tab.Pane>
+                                        <Tab.Pane eventKey="dictionary"><DictionaryTab/></Tab.Pane>
                                         <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
                                     </Tab.Content>
                                 </Col>
@@ -115,15 +129,38 @@ export default function Page() {
                     <Col md={3}>
                         <Row className={"mt-4 justify-content-between"}>
                             <Col xs={4}>
-                                <text style={{marginLeft: 10}} className={"fw-bolder h6 font-monospace"}>Profile
+                                <text style={{marginLeft: 10}} className={"fw-bolder h5 font-monospace"}>Profile
                                 </text>
                             </Col>
                             <Col xs={2}>
-                                <img src={editIcon.src} style={{width: 30}}/>
+                                <img src={editIcon.src} style={{width: 26}}/>
                             </Col>
                         </Row>
-                        <Row xs={1} className={"justify-content-center mt-5"}>
+                        <Row xs="auto" className={"justify-content-center mt-5"}>
                             <img src={userIcon.src} style={{width: 160}}/>
+                        </Row>
+                        <Row className={"mt-3 justify-content-center"}>
+                            <Col xs="auto">
+                                <text className={"fw-bold h6 font-monospace"} style={{color: "deeppink"}}>Hiep Nguyen
+                                </text>
+                                <img src={checkIcon.src} style={{width: 20, marginLeft: 10}}/>
+
+                            </Col>
+
+
+                        </Row>
+                        <Row className={"mt-1 justify-content-center"}>
+                            <Col xs="auto">
+                                <text className={"font-monospace"} style={{color: "gray"}}>hiep2002hd</text>
+                            </Col>
+                        </Row>
+                        <Row className={"mt-3 font-monospace"}>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+
+                                <DateCalendar defaultValue={dayjs(Date.now())}/>
+
+                            </LocalizationProvider>
+
                         </Row>
                     </Col>
                 </Row>
