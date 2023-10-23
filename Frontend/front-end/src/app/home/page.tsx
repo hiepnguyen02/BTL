@@ -29,6 +29,7 @@ import dayjs from "dayjs";
 import DictionaryTab from "@/components/dictionaryTab";
 import {TextField} from "@mui/material";
 import styles from './Page.module.css'
+import TranslateTab from "@/components/translateTab";
 
 export default function Page() {
     const [userRegister, setUserRegister] = useState<UserRegister | null>({
@@ -173,7 +174,7 @@ export default function Page() {
                                 <Col>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="dashBoard">First tab content</Tab.Pane>
-                                        <Tab.Pane eventKey="translate">Second tab content</Tab.Pane>
+                                        <Tab.Pane eventKey="translate"><TranslateTab/></Tab.Pane>
                                         <Tab.Pane eventKey="dictionary"><DictionaryTab/></Tab.Pane>
                                         <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
                                     </Tab.Content>

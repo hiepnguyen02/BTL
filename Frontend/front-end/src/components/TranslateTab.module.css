@@ -1,0 +1,5 @@
+.navbar {
+    --bs-nav-underline-border-width: 0.3rem;
+    --bs-nav-underline-link-active-color: deeppink;
+    --bs-nav-link-color: black;
+}
