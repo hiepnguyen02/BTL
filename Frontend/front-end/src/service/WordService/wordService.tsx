@@ -14,10 +14,11 @@ export const searchWordService = async (prefix: string | null,
             const response = await wordSearchRepository(prefix);
 
             setResult(response);
-            console.log(response.length);
+            setIsLoading(false);
 
         } else {
             setError("Thong tin dang nhap khong hop le");
+            setIsLoading(false);
         }
 
 

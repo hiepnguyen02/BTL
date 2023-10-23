@@ -6,8 +6,19 @@ import styles from './WordDetail.module.css'
 
 
 export default function WordDetail(chosenWord: EnglishWord) {
+    const synthesis = window.speechSynthesis;
+
+    const speakText = () => {
+        if (synthesis && chosenWord?.word) {
+            const utterance = new SpeechSynthesisUtterance(chosenWord.word);
+            synthesis.speak(utterance);
+        }
+    }
     return (
-        <Container style={{borderRadius: 13, padding: 20, border: "solid", background: "lightpink"}}>
+        <Container style={{
+            borderRadius: 13, padding: 20, border: "solid", background: "lightpink", maxHeight: "60vh",
+            overflow: "scroll"
+        }}>
             <Row>
                 <Col className={"h1 fw-bolder font-monospace"}>
                     {chosenWord.word}
@@ -15,7 +26,9 @@ export default function WordDetail(chosenWord: EnglishWord) {
             </Row>
             <Row className={"align-items-center"}>
                 <Col xs="auto">
-                    <Button className={styles.speaker}>
+                    <Button className={styles.speaker}
+                            onClick={() => speakText()}
+                    >
                         <img src={speakerIcon.src} style={{width: 40, margin: 0}}/>
                     </Button>
                 </Col>

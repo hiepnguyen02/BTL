@@ -1,13 +1,13 @@
 'use client'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import {Button, Col, Form, ListGroup, Modal} from "react-bootstrap";
+import {Button, Col, Collapse, Form, ListGroup, Modal, Spinner} from "react-bootstrap";
 import translationIcon from "@/img/home/translation.png";
 import searchIcon from '../img/home/search.png'
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {loginService} from "@/service/AuthenticationService/loginService";
 import {searchWordService} from "@/service/WordService/wordService";
-import {ListItem} from "@mui/material";
+import {debounce, ListItem} from "@mui/material";
 import WordDetail from "@/components/wordDetail";
 
 export default function DictionaryTab() {
@@ -16,18 +16,21 @@ export default function DictionaryTab() {
     const [result, setResult] = useState<EnglishWord[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [chosenWord, setChosenWord] = useState<EnglishWord>();
-    const handleSearch = async (value: string) => {
 
-        try {
-            await searchWordService(value, setResult, setIsLoading, setError);
-
-        } catch (error) {
-            setIsLoading(false);
-            setError("Thông tin đăng nhập không không hợp lệ.")
-
-        }
-    }
-
+    const debouncedSearch = useCallback(
+        debounce(async (value) => {
+            try {
+                searchWordService(value, setResult, setIsLoading, setError);
+            } catch (error) {
+            }
+        }, 300),
+        []
+    );
+    const handleInputChange = (event: any) => {
+        const newValue = event.target.value;
+        setSearchValue(newValue);
+        debouncedSearch(newValue);
+    };
     return (
         <>
             <Container className={"mt-4 justify-content-center"}>
@@ -47,21 +50,28 @@ export default function DictionaryTab() {
                                               placeholder={"Find a word!"}
                                               value={searchValue}
                                               onChange={(value) => {
-                                                  setSearchValue(value.target.value);
-                                                  handleSearch(value.target.value);
+
+                                                  handleInputChange(value);
                                               }}/>
                             </Col>
+                            {
+                                isLoading ? <Col>
+                                    <Spinner animation="border" role="status" size={"sm"}></Spinner>
+                                </Col> : null
+                            }
                         </Row>
 
                         <Row>
                             <Modal.Dialog hidden={searchValue == ""} style={{width: "100%"}}>
                                 <Modal.Body>
-                                    {result.length != 0 ?
+                                    {(result.length != 0) && (isLoading == false) ?
                                         <ListGroup style={{overflow: "scroll", maxHeight: "90vh"}}>
                                             {result.map(value =>
                                                 <Button key={value.id} className={"border-0 p-0 btn-light"}
-                                                        onClick={() => setChosenWord(value)}
-                                                >
+                                                        onClick={() => {
+                                                            setChosenWord(value);
+                                                            setSearchValue("");
+                                                        }}>
                                                     <ListGroup.Item
                                                         style={{background: "transparent"}}
                                                     >
@@ -92,12 +102,22 @@ export default function DictionaryTab() {
                         </Row>
                     </Col>
                 </Row>
-                {searchValue == "" ? <Row className={"mt-3"}>
-                    {chosenWord != null ? <Col>
-                        <WordDetail define={chosenWord.define} id={chosenWord.id} spelling={chosenWord.spelling}
-                                    type={chosenWord.type} word={chosenWord.word}/>
-                    </Col> : null}
-                </Row> : null}
+                {searchValue == "" ?
+                    <Row className={"mt-3 "}>
+                        {chosenWord != null ?
+
+                            <Col>
+
+                                <WordDetail define={chosenWord.define} id={chosenWord.id}
+                                            spelling={chosenWord.spelling}
+                                            type={chosenWord.type} word={chosenWord.word}/>
+
+                            </Col>
+
+                            : null}
+                    </Row>
+
+                    : null}
 
 
             </Container>

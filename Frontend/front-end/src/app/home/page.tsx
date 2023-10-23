@@ -28,6 +28,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import DictionaryTab from "@/components/dictionaryTab";
 import {TextField} from "@mui/material";
+import styles from './Page.module.css'
 
 export default function Page() {
     const [userRegister, setUserRegister] = useState<UserRegister | null>({
@@ -51,6 +52,11 @@ export default function Page() {
     const handleLogin = () => {
         console.log("djhdjdhj");
     }
+    const [selectedItem, setSelectedItem] = useState('dictionary');
+
+    const handleSelect = (selectedKey: string) => {
+        setSelectedItem(selectedKey);
+    };
     return (
         <Container
             fluid={true}
@@ -81,32 +87,83 @@ export default function Page() {
                                         me!
                                     </text>
 
-                                    <Nav variant="pills" className="flex-column mt-4">
+                                    <Nav variant="pills" className="flex-column mt-4"
+                                         onSelect={(value) => handleSelect(value!)}>
                                         <Nav.Item>
                                             <Nav.Link eventKey="dashBoard"
-                                                      style={{
+                                                      style={selectedItem != "dashBoard" ? {
                                                           fontSize: 18,
                                                           fontFamily: "monospace",
+                                                          color: "black",
 
-                                                      }}>
+
+                                                      } : {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          backgroundColor: "pink",
+                                                          color: "black",
+                                                          fontWeight: "bolder"
+
+                                                      }}
+
+                                            >
                                                 <img src={dashBoardIcon.src} style={{width: 30, marginRight: 10}}/>
                                                 Dashboard</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
                                             <Nav.Link eventKey="translate"
-                                                      style={{fontSize: 18, fontFamily: "monospace"}}>
+                                                      style={selectedItem != "translate" ? {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          color: "black",
+
+
+                                                      } : {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          backgroundColor: "pink",
+                                                          color: "black",
+                                                          fontWeight: "bolder"
+
+                                                      }}>
                                                 <img src={translationIcon.src} style={{width: 30, marginRight: 10}}/>
                                                 Translate</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
                                             <Nav.Link eventKey="dictionary"
-                                                      style={{fontSize: 18, fontFamily: "monospace"}}>
+                                                      style={selectedItem != "dictionary" ? {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          color: "black",
+
+
+                                                      } : {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          backgroundColor: "pink",
+                                                          color: "black",
+                                                          fontWeight: "bolder"
+
+                                                      }}>
                                                 <img src={bookIcon.src} style={{width: 30, marginRight: 10}}/>
                                                 Dictionary</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
                                             <Nav.Link eventKey="setting"
-                                                      style={{fontSize: 18, fontFamily: "monospace"}}>
+                                                      style={selectedItem != "setting" ? {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          color: "black",
+
+
+                                                      } : {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          backgroundColor: "pink",
+                                                          color: "black",
+                                                          fontWeight: "bolder"
+
+                                                      }}>
                                                 <img src={settingsIcon.src} style={{width: 30, marginRight: 10}}/>
                                                 Settings</Nav.Link>
                                         </Nav.Item>
