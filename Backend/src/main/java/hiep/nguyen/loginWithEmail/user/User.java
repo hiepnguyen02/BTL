@@ -1,5 +1,6 @@
 package hiep.nguyen.loginWithEmail.user;
 
+import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,16 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private PersonalDictionary personalDictionary;
+
+    public PersonalDictionary getPersonalDictionary() {
+        return personalDictionary;
+    }
+
+    public void setPersonalDictionary(PersonalDictionary personalDictionary) {
+        this.personalDictionary = personalDictionary;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

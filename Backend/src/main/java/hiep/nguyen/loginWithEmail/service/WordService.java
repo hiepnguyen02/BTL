@@ -1,5 +1,7 @@
 package hiep.nguyen.loginWithEmail.service;
 
+import hiep.nguyen.loginWithEmail.entity.EngWord;
+import hiep.nguyen.loginWithEmail.entity.ViWord;
 import hiep.nguyen.loginWithEmail.entity.Word;
 import hiep.nguyen.loginWithEmail.repository.WordRepository;
 import jakarta.annotation.PostConstruct;
@@ -15,7 +17,8 @@ import java.util.List;
 
 @Service
 public class WordService {
-    private final String file = "src/main/java/hiep/nguyen/loginWithEmail/sourceFile/anhviet109K.txt";
+    private final String ENGSOURCE = "src/main/java/hiep/nguyen/loginWithEmail/sourceFile/anhviet109K.txt";
+    private final String VISOURCE = "src/main/java/hiep/nguyen/loginWithEmail/sourceFile/vietanh.txt";
     private final WordRepository wordRepository;
 
     @Autowired
@@ -33,21 +36,20 @@ public class WordService {
 
     //Read words from txt files, turn on if you need to get new data from txt,
     //Remember to set ddl-auto: create-drop
-/*
-    @PostConstruct
-    @Transactional
-    public void loadWordFromFile() throws IOException {
-        FileReader fis = new FileReader(file);
+
+
+    public void loadEngWordFromFile() throws IOException {
+        FileReader fis = new FileReader(ENGSOURCE);
         BufferedReader br = new BufferedReader(fis);
         String line;
-        Word word = new Word();
+        EngWord word = new EngWord();
+
         word.setDefine("");
         while ((line = br.readLine()) != null) {
             if (line.length() != 1) {
                 if (line.startsWith("@")) {
                     if (word.getWord() != null) {
-                        System.out.println(word.getSpelling());
-                        Word word1 = new Word(word);
+                        EngWord word1 = new EngWord(word);
                         wordRepository.save(word1);
                         word.setDefine("");
                     }
@@ -89,8 +91,70 @@ public class WordService {
 
             }
         }
+        fis.close();
+        br.close();
 
     }
 
- */
+
+    public void loadViWordFromFile() throws IOException {
+        FileReader fis = new FileReader(VISOURCE);
+        BufferedReader br = new BufferedReader(fis);
+        String line;
+        ViWord word = new ViWord();
+
+        word.setDefine("");
+        while ((line = br.readLine()) != null) {
+            if (line.length() != 1) {
+                if (line.startsWith("@")) {
+                    if (word.getWord() != null) {
+                        ViWord word1 = new ViWord(word);
+                        wordRepository.save(word1);
+                        word.setDefine("");
+                    }
+                    word.setWord(line.substring(1, line.length()));
+
+                }
+                if (line.startsWith("*")) {
+                    word.setType(line.substring(1, line.length()));
+                }
+                if (line.startsWith("-")) {
+                    word.setDefine(word.getDefine() + line.substring(1, line.length()));
+                }
+                if (line.startsWith("=")) {
+
+                    int index = line.indexOf("+");
+                    if (index != -1) {
+                        word.setDefine(word.getDefine() + line.substring(1, index));
+                        word.setDefine(word.getDefine() + "\n" + line.substring(index + 1, line.length()));
+
+                    } else {
+                        word.setDefine(word.getDefine() + "\n" + line.substring(1, line.length()));
+
+                    }
+
+
+                }
+                if (line.startsWith("!")) {
+
+                    word.setDefine(word.getDefine() + "\n" + line.substring(1, line.length()));
+
+                }
+
+            }
+        }
+        fis.close();
+        br.close();
+
+
+    }
+
+//    @PostConstruct
+//    @Transactional
+//    public void loadWordFromFile() throws IOException {
+//        loadEngWordFromFile();
+//        loadViWordFromFile();
+//    }
+
+
 }

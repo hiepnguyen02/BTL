@@ -5,28 +5,39 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.Dictionary;
+
 @Entity
 @Table(name = "words")
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Word {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Word {
     @Id
     @GeneratedValue()
     private long id;
     private String word;
     @Column(columnDefinition = "TEXT")
     private String define;
-    private String spelling;
+
 
     private String type;
+    @ManyToOne
+    @JoinColumn(name = "dictionary_id")
+    private PersonalDictionary personalDictionary;
+
+    public PersonalDictionary getPersonalDictionary() {
+        return personalDictionary;
+    }
+
+    public void setPersonalDictionary(PersonalDictionary personalDictionary) {
+        this.personalDictionary = personalDictionary;
+    }
 
     public Word(Word word) {
         this.id = word.id;
         this.word = word.word;
         this.define = word.define;
-        this.spelling = word.spelling;
         this.type = word.type;
     }
 
@@ -62,11 +73,4 @@ public class Word {
         this.define = define;
     }
 
-    public String getSpelling() {
-        return spelling;
-    }
-
-    public void setSpelling(String spelling) {
-        this.spelling = spelling;
-    }
 }

@@ -1,6 +1,9 @@
 package hiep.nguyen.loginWithEmail.auth;
 
 import hiep.nguyen.loginWithEmail.config.JwtService;
+import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
+import hiep.nguyen.loginWithEmail.repository.PersonalDictionaryRepository;
+import hiep.nguyen.loginWithEmail.service.PersonalDictionaryService;
 import hiep.nguyen.loginWithEmail.user.Role;
 import hiep.nguyen.loginWithEmail.user.User;
 import hiep.nguyen.loginWithEmail.user.UserRepository;
@@ -11,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Dictionary;
 import java.util.logging.Logger;
 
 @Service
@@ -22,6 +26,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
+    private final PersonalDictionaryRepository personalDictionaryRepository;
 
     public AuthenticationResponse register(RegisterRequest request) {
 
@@ -33,7 +38,9 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
         repository.save(user);
-        System.out.println(request.getEmail());
+        PersonalDictionary personalDictionary = new PersonalDictionary();
+        personalDictionary.setUser(user);
+        personalDictionaryRepository.save(personalDictionary);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
