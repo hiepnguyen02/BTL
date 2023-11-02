@@ -1,10 +1,10 @@
-package hiep.nguyen.loginWithEmail.controller.PersonalWordController;
+package hiep.nguyen.loginWithEmail.controller;
 
+import hiep.nguyen.loginWithEmail.controller.PersonalWordController.PersonalWordRequest;
 import hiep.nguyen.loginWithEmail.entity.EngWord;
 import hiep.nguyen.loginWithEmail.entity.ViWord;
 import hiep.nguyen.loginWithEmail.entity.Word;
-import hiep.nguyen.loginWithEmail.service.PersonalDictionaryService;
-import hiep.nguyen.loginWithEmail.service.UserService;
+import hiep.nguyen.loginWithEmail.service.BookmarkService;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/user/dictionary")
+@RequestMapping("/api/v1/user/bookmark")
+public class BookmarkController {
+    private final BookmarkService bookmarkService;
 
-public class PersonalWordController {
-    private final PersonalDictionaryService personalDictionaryService;
-
-    public PersonalWordController(PersonalDictionaryService personalDictionaryService, UserService userService) {
-        this.personalDictionaryService = personalDictionaryService;
+    public BookmarkController(BookmarkService bookmarkService) {
+        this.bookmarkService = bookmarkService;
     }
+
 
     @PostMapping("/add-word")
     public Word createWord(@RequestHeader("Authorization") String token,
@@ -29,7 +29,7 @@ public class PersonalWordController {
             word.setWord(personalWordRequest.getWord());
             word.setDefine(personalWordRequest.getDefine());
             word.setType(personalWordRequest.getType());
-            return personalDictionaryService.addWordToPersonalDictionary(token.substring(7), word);
+            return bookmarkService.addWordToBookMark(token.substring(7), word);
 
 
         } else {
@@ -38,29 +38,21 @@ public class PersonalWordController {
             word.setDefine(personalWordRequest.getDefine());
             word.setType(personalWordRequest.getType());
             word.setSpelling(personalWordRequest.getSpelling());
-            return personalDictionaryService.addWordToPersonalDictionary(token.substring(7), word);
+            return bookmarkService.addWordToBookMark(token.substring(7), word);
 
         }
 
 
     }
 
-    @GetMapping("/get-personal-dictionary")
+    @GetMapping("/get-bookmark")
     public List<Word> search(@RequestParam String token) {
-        return personalDictionaryService.getPersonalDictionary(token);
+        return bookmarkService.getBookmark(token);
     }
 
     @PostMapping("/delete-word")
     public ResponseEntity<Boolean> deleteWord(@RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
-        personalDictionaryService.deleteWordFromPersonalDictionary(wordId);
+        bookmarkService.deleteWordFromBookmark(wordId);
         return ResponseEntity.ok(true);
-    }
-
-    @PostMapping("/update-word")
-    public Word createWord(
-            @RequestBody PersonalWordRequest personalWordRequest) throws ChangeSetPersister.NotFoundException {
-        return personalDictionaryService.updateWord(personalWordRequest);
-
-
     }
 }

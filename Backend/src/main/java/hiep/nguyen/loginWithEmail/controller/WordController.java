@@ -22,15 +22,9 @@ public class WordController {
     @Autowired
     private WordService wordService;
 
-    @PostMapping("/create")
-    public Word createWord(@RequestBody Word word) {
-        return wordService.createWord(word);
-    }
-
     @GetMapping("/search")
     public List<Word> search(@RequestParam String prefix) {
         return wordService.searchByNameStartingWith(prefix);
-
     }
 
 

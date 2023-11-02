@@ -1,14 +1,13 @@
 package hiep.nguyen.loginWithEmail.service;
 
-import hiep.nguyen.loginWithEmail.entity.EngWord;
-import hiep.nguyen.loginWithEmail.entity.ViWord;
-import hiep.nguyen.loginWithEmail.entity.Word;
+import hiep.nguyen.loginWithEmail.entity.*;
+import hiep.nguyen.loginWithEmail.repository.PersonalDictionaryRepository;
 import hiep.nguyen.loginWithEmail.repository.WordRepository;
+import hiep.nguyen.loginWithEmail.user.User;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -20,10 +19,15 @@ public class WordService {
     private final String ENGSOURCE = "src/main/java/hiep/nguyen/loginWithEmail/sourceFile/anhviet109K.txt";
     private final String VISOURCE = "src/main/java/hiep/nguyen/loginWithEmail/sourceFile/vietanh.txt";
     private final WordRepository wordRepository;
+    private final UserService userService;
+    private final PersonalDictionaryRepository personalDictionaryRepository;
 
     @Autowired
-    public WordService(WordRepository wordRepository) {
+    public WordService(WordRepository wordRepository, UserService userService, PersonalDictionaryService dictionaryService, PersonalDictionaryRepository personalDictionaryRepository) {
         this.wordRepository = wordRepository;
+        this.userService = userService;
+
+        this.personalDictionaryRepository = personalDictionaryRepository;
     }
 
     public Word createWord(Word word) {
@@ -31,8 +35,15 @@ public class WordService {
     }
 
     public List<Word> searchByNameStartingWith(String prefix) {
-        return wordRepository.findByWordStartingWith(prefix);
+        return wordRepository.findByWordStartingWithAndPersonalDictionaryIsNullAndBookmarkIsNull(prefix);
     }
+
+    public List<Word> searchByNameStartingWithByUser(String prefix, String token) {
+        User user = userService.getUserByToken(token);
+        PersonalDictionary personalDictionary = personalDictionaryRepository.findByUser(user);
+        return wordRepository.findByWordStartingWithAndBookmarkIsNullAndPersonalDictionaryIsNullOrPersonalDictionary(prefix, personalDictionary);
+    }
+
 
     //Read words from txt files, turn on if you need to get new data from txt,
     //Remember to set ddl-auto: create-drop

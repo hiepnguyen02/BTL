@@ -2,6 +2,7 @@ package hiep.nguyen.loginWithEmail.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import hiep.nguyen.loginWithEmail.entity.Bookmark;
 import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,10 @@ public class User implements UserDetails {
     @JoinColumn(name = "dictionary_id", referencedColumnName = "id")
     @JsonIgnoreProperties("user")
     private PersonalDictionary personalDictionary;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bookmark_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("user")
+    private Bookmark bookmark;
 
     public User(User user) {
         this.id = user.id;
@@ -44,6 +49,7 @@ public class User implements UserDetails {
         this.password = user.getPassword();
         this.role = user.getRole();
         this.personalDictionary = user.getPersonalDictionary();
+        this.bookmark = user.getBookmark();
 
     }
 

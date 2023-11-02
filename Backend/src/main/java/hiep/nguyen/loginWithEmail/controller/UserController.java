@@ -1,21 +1,33 @@
 package hiep.nguyen.loginWithEmail.controller;
 
+import hiep.nguyen.loginWithEmail.entity.Word;
 import hiep.nguyen.loginWithEmail.service.UserService;
+import hiep.nguyen.loginWithEmail.service.WordService;
 import hiep.nguyen.loginWithEmail.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final WordService wordService;
+    private final UserService userService;
+
+    public UserController(WordService wordService, UserService userService) {
+        this.wordService = wordService;
+        this.userService = userService;
+    }
+
 
     @GetMapping("/get")
-    public User get(@RequestParam String token) {
-        return userService.getUserByToken(token);
+    public User get(@RequestHeader("Authorization") String token) {
+        return userService.getUserByToken(token.substring(7));
+    }
+
+    @GetMapping("/search")
+    public List<Word> search(@RequestParam String prefix, @RequestHeader("Authorization") String token) {
+        return wordService.searchByNameStartingWithByUser(prefix, token.substring(7));
+
     }
 }

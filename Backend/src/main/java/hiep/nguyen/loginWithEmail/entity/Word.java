@@ -26,6 +26,17 @@ public abstract class Word {
     @ManyToOne
     @JoinColumn(name = "dictionary_id")
     private PersonalDictionary personalDictionary;
+    @ManyToOne
+    @JoinColumn(name = "bookmark_id")
+    private Bookmark bookmark;
+
+    public Bookmark getBookmark() {
+        return bookmark;
+    }
+
+    public void setBookmark(Bookmark bookmark) {
+        this.bookmark = bookmark;
+    }
 
     public PersonalDictionary getPersonalDictionary() {
         return personalDictionary;
