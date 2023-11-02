@@ -1,5 +1,7 @@
 package hiep.nguyen.loginWithEmail.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hiep.nguyen.loginWithEmail.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,11 +20,11 @@ public class PersonalDictionary {
     @Id
     @GeneratedValue()
     private Long id;
+    @JsonIgnoreProperties("personalDictionary")
 
     @OneToMany(mappedBy = "personalDictionary", cascade = CascadeType.ALL)
     private List<Word> personalList = new ArrayList<>();
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "personalDictionary")
     private User user;
 
     public List<Word> getPersonalList() {
@@ -40,6 +42,7 @@ public class PersonalDictionary {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public User getUser() {
         return user;

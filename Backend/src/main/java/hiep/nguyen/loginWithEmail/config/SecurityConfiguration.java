@@ -2,6 +2,7 @@ package hiep.nguyen.loginWithEmail.config;
 
 import hiep.nguyen.loginWithEmail.user.Role;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -21,6 +22,8 @@ public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authenticationProvider;
     private final CorsConfigurationSource corsConfigurationSource;
+//    @Value("${spring.websecurity.debug:false}")
+//    boolean webSecurityDebug;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -28,7 +31,7 @@ public class SecurityConfiguration {
 
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/api/v1/auth/**", "/api/v1/word/search").permitAll()
+                        .requestMatchers("/api/v1/auth/**", "/api/v1/search/**").permitAll()
                         .anyRequest().authenticated()
                 )
 

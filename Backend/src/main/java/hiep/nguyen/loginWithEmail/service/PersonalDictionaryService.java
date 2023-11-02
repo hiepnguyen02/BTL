@@ -1,6 +1,7 @@
 package hiep.nguyen.loginWithEmail.service;
 
 import hiep.nguyen.loginWithEmail.config.JwtService;
+import hiep.nguyen.loginWithEmail.controller.PersonalWordController.PersonalWordRequest;
 import hiep.nguyen.loginWithEmail.entity.EngWord;
 import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
 import hiep.nguyen.loginWithEmail.entity.ViWord;
@@ -44,26 +45,35 @@ public class PersonalDictionaryService {
         if (word instanceof ViWord) {
             ViWord newWord = new ViWord((ViWord) word);
             newWord.setPersonalDictionary(personalDictionary);
-            wordRepository.save(newWord);
+            return wordRepository.save(newWord);
         } else {
             EngWord newWord = new EngWord((EngWord) word);
             newWord.setPersonalDictionary(personalDictionary);
-            wordRepository.save(newWord);
+            return wordRepository.save(newWord);
         }
-        return word;
 
     }
 
-    @Transactional
-    @PreAuthorize("hasRole('USER')")
     public List<Word> getPersonalDictionary(String token) {
         User user = userService.getUserByToken(token);
         PersonalDictionary personalDictionary = personalDictionaryRepository.findByUser(user);
-        List<Word> result = wordRepository.findByPersonalDictionary(personalDictionary);
-        for (Word word : result) {
-            System.out.println(word.getWord());
-        }
-        return result;
+        return wordRepository.findByPersonalDictionary(personalDictionary);
 
     }
+
+    public void deleteWordFromPersonalDictionary(Long id) {
+        wordRepository.deleteById(id);
+    }
+
+    public Word updateWord(PersonalWordRequest personalWordRequest) {
+        Word word = wordRepository.findById(personalWordRequest.getId())
+                .orElseThrow(() -> new UsernameNotFoundException("Word not found"));
+        ;
+        word.setWord(personalWordRequest.getWord());
+        word.setDefine(personalWordRequest.getDefine());
+        word.setType(personalWordRequest.getType());
+        return wordRepository.save(word);
+
+    }
+
 }

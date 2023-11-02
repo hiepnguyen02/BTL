@@ -1,10 +1,13 @@
 package hiep.nguyen.loginWithEmail.service;
 
 import hiep.nguyen.loginWithEmail.config.JwtService;
+import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
+import hiep.nguyen.loginWithEmail.user.Role;
 import hiep.nguyen.loginWithEmail.user.User;
 import hiep.nguyen.loginWithEmail.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +21,10 @@ public class UserService {
     private JwtService jwtService;
 
     public User getUserByToken(String token) {
+
         return userRepository.findByEmail(jwtService.extractUsername(token))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
 
     }
 }

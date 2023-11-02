@@ -29,17 +29,16 @@ public class AuthenticationService {
     private final PersonalDictionaryRepository personalDictionaryRepository;
 
     public AuthenticationResponse register(RegisterRequest request) {
-
+        PersonalDictionary personalDictionary = new PersonalDictionary();
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .personalDictionary(personalDictionary)
                 .role(Role.USER)
                 .build();
         repository.save(user);
-        PersonalDictionary personalDictionary = new PersonalDictionary();
-        personalDictionary.setUser(user);
         personalDictionaryRepository.save(personalDictionary);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()

@@ -6,13 +6,13 @@ import hiep.nguyen.loginWithEmail.entity.Word;
 import hiep.nguyen.loginWithEmail.service.PersonalDictionaryService;
 import hiep.nguyen.loginWithEmail.service.UserService;
 import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/personal")
+@RequestMapping("/api/v1/user")
 
 public class PersonalWordController {
     private final PersonalDictionaryService personalDictionaryService;
@@ -45,12 +45,22 @@ public class PersonalWordController {
 
     }
 
-    //    @PostMapping("/get-personal-dictionary")
-//    public List<Word> createWord(@RequestHeader("Authorization") String token) {
-//        return personalDictionaryService.getPersonalDictionary(token.substring(7));
-//    }
     @GetMapping("/get-personal-dictionary")
     public List<Word> search(@RequestParam String token) {
         return personalDictionaryService.getPersonalDictionary(token);
+    }
+
+    @PostMapping("/delete-word")
+    public ResponseEntity<Boolean> deleteWord(@RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
+        personalDictionaryService.deleteWordFromPersonalDictionary(wordId);
+        return ResponseEntity.ok(true);
+    }
+
+    @PostMapping("/update-word")
+    public Word createWord(
+            @RequestBody PersonalWordRequest personalWordRequest) throws ChangeSetPersister.NotFoundException {
+        return personalDictionaryService.updateWord(personalWordRequest);
+
+
     }
 }
