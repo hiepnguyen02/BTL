@@ -5,7 +5,7 @@ import speakerIcon from "@/img/home/marketing.png";
 import styles from './WordDetail.module.css'
 
 
-export default function WordDetail(chosenWord: EnglishWord) {
+export default function WordDetail(chosenWord: Word) {
     const synthesis = window.speechSynthesis;
 
     const speakText = () => {

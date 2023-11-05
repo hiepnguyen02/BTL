@@ -1,4 +1,4 @@
-interface EnglishWord {
+interface Word {
     id: number | null;
     word: string | null;
     define: string | null;

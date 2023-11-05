@@ -3,7 +3,7 @@ import Config from "@/repository/config";
 import {wordSearchRepository} from "@/repository/WordRepository/wordRepository";
 
 export const searchWordService = async (prefix: string | null,
-                                        setResult: React.Dispatch<React.SetStateAction<EnglishWord[]>>,
+                                        setResult: React.Dispatch<React.SetStateAction<Word[]>>,
                                         setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
                                         setError: React.Dispatch<React.SetStateAction<string | null>>
 ): Promise<void> => {

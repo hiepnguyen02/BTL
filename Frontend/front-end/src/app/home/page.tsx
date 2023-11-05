@@ -6,7 +6,7 @@ import {Button, Col, Form, Image, Alert, Navbar, NavbarToggle, NavItem, Nav, Tab
 import loginImage from '../../img/login/login.png'
 import dictionary from '../../img/login/dictionary.png'
 import {auto} from "@popperjs/core";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {loginService} from "@/service/AuthenticationService/loginService";
 import {loginRepository} from "@/repository/AuthenticationRepository/loginRepository";
 import {log} from "util";
@@ -30,29 +30,24 @@ import DictionaryTab from "@/components/dictionaryTab";
 import {TextField} from "@mui/material";
 import styles from './Page.module.css'
 import TranslateTab from "@/components/translateTab";
+import config from "@/repository/config";
+import {getUserByTokenService} from "@/service/UserService/userService";
+import Link from "next/link";
+import Config from "@/repository/config";
 
 export default function Page() {
-    const [userRegister, setUserRegister] = useState<UserRegister | null>({
-        firstName: null,
-        lastName: null, password: null, email: null
-    });
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [showAlert, setShowAlert] = useState<boolean>(false);
-
     const router = useRouter();
-    const handleRegister = async () => {
+    const [user, setUser] = useState<UserRegister | null>(null);
+    useEffect(() => {
+        getUserByTokenService().then((e) => {
+            if (e?.email != null) {
+                setUser(e);
+            }
+        })
 
-        try {
-            await registerService(userRegister, setIsLoading, setError);
-            setShowAlert(true);
-        } catch (error) {
 
-        }
-    }
-    const handleLogin = () => {
-        console.log("djhdjdhj");
-    }
+    }, [],)
+
     const [selectedItem, setSelectedItem] = useState('dictionary');
 
     const handleSelect = (selectedKey: string) => {
@@ -185,33 +180,57 @@ export default function Page() {
                     </Col>
 
                     <Col md={3}>
-                        <Row className={"mt-4 justify-content-between"}>
-                            <Col xs={4}>
-                                <text style={{marginLeft: 10}} className={"fw-bolder h5 font-monospace"}>Profile
-                                </text>
-                            </Col>
-                            <Col xs={2}>
-                                <img src={editIcon.src} style={{width: 26}}/>
-                            </Col>
-                        </Row>
-                        <Row xs="auto" className={"justify-content-center mt-5"}>
-                            <img src={userIcon.src} style={{width: 160}}/>
-                        </Row>
-                        <Row className={"mt-3 justify-content-center"}>
-                            <Col xs="auto">
-                                <text className={"fw-bold h6 font-monospace"} style={{color: "deeppink"}}>Hiep Nguyen
-                                </text>
-                                <img src={checkIcon.src} style={{width: 20, marginLeft: 10}}/>
+                        {user == null ?
+                            <Row className={"mt-4 justify-content-between"}>
+                                <Row>
 
-                            </Col>
+                                    <Col>
+                                        <Button variant="outline-success" type="button"
+                                                style={{borderRadius: 18, width: "100%"}}
+                                                onClick={() => router.push("/register")}
+                                        >
+                                            To use all utilities, please create an account!
+                                            <Link href={"/register"}></Link>
+                                        </Button>
+                                    </Col>
+                                </Row>
+
+                            </Row>
+                            :
+                            <Row>
+                                <Row className={"mt-4 justify-content-between"}>
+                                    <Col xs={4}>
+                                        <text style={{marginLeft: 10}} className={"fw-bolder h5 font-monospace"}>Profile
+                                        </text>
+                                    </Col>
+                                    <Col xs={2}>
+                                        <img src={editIcon.src} style={{width: 26}}/>
+                                    </Col>
+                                </Row>
+                                <Row xs="auto" className={"justify-content-center mt-5"}>
+                                    <img src={userIcon.src} style={{width: 160}}/>
+                                </Row>
+                                <Row className={"mt-3 justify-content-center"}>
+                                    <Col xs="auto">
+                                        <text className={"fw-bold h6 font-monospace"} style={{color: "deeppink"}}>
+                                            {`${user.firstName} ${user.lastName}`}
+                                        </text>
+                                        <img src={checkIcon.src} style={{width: 20, marginLeft: 10}}/>
+
+                                    </Col>
 
 
-                        </Row>
-                        <Row className={"mt-1 justify-content-center"}>
-                            <Col xs="auto">
-                                <text className={"font-monospace"} style={{color: "gray"}}>hiep2002hd</text>
-                            </Col>
-                        </Row>
+                                </Row>
+                                <Row className={"mt-1 justify-content-center"}>
+                                    <Col xs="auto">
+                                        <text className={"font-monospace"} style={{color: "gray"}}>{user.email}</text>
+                                    </Col>
+                                </Row>
+                            </Row>
+
+                        }
+
+
                         <Row className={"mt-3 font-monospace"}>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
 

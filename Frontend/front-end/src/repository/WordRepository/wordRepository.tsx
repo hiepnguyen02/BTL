@@ -1,11 +1,12 @@
 import Config from "@/repository/config";
 
-export const wordSearchRepository = async (prefix: string): Promise<EnglishWord[]> => {
+export const wordSearchRepository = async (prefix: string): Promise<Word[]> => {
     try {
         const response = await fetch(`${Config.API_URL}/word/search?prefix=${prefix}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+
             },
         });
 
@@ -13,7 +14,7 @@ export const wordSearchRepository = async (prefix: string): Promise<EnglishWord[
             throw new Error('Login failed');
         }
 
-        const data: EnglishWord[] = await response.json();
+        const data: Word[] = await response.json();
         return data;
 
 
