@@ -1,9 +1,14 @@
 package hiep.nguyen.loginWithEmail.controller.PersonalWordController;
 
+import hiep.nguyen.loginWithEmail.entity.Bookmark;
+import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
+import hiep.nguyen.loginWithEmail.entity.Word;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -18,6 +23,25 @@ public class PersonalWordRequest {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    private PersonalDictionary personalDictionary;
+    private List<Bookmark> bookmarkList;
+
+    public PersonalDictionary getPersonalDictionary() {
+        return personalDictionary;
+    }
+
+    public void setPersonalDictionary(PersonalDictionary personalDictionary) {
+        this.personalDictionary = personalDictionary;
+    }
+
+    public List<Bookmark> getBookmarkList() {
+        return bookmarkList;
+    }
+
+    public void setBookmarkList(List<Bookmark> bookmarkList) {
+        this.bookmarkList = bookmarkList;
     }
 
     private String word;

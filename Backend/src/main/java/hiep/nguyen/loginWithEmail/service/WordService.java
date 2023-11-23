@@ -1,5 +1,6 @@
 package hiep.nguyen.loginWithEmail.service;
 
+import hiep.nguyen.loginWithEmail.controller.PersonalWordController.PersonalWordRequest;
 import hiep.nguyen.loginWithEmail.entity.*;
 import hiep.nguyen.loginWithEmail.repository.PersonalDictionaryRepository;
 import hiep.nguyen.loginWithEmail.repository.WordRepository;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,13 +37,43 @@ public class WordService {
     }
 
     public List<Word> searchByNameStartingWith(String prefix) {
-        return wordRepository.findByWordStartingWithAndPersonalDictionaryIsNullAndBookmarkIsNull(prefix);
+        return wordRepository.findByWordStartingWithAndPersonalDictionaryIsNull(prefix);
     }
 
-    public List<Word> searchByNameStartingWithByUser(String prefix, String token) {
+    public List<PersonalWordRequest> searchByNameStartingWithByUser(String prefix, String token) {
         User user = userService.getUserByToken(token);
         PersonalDictionary personalDictionary = personalDictionaryRepository.findByUser(user);
-        return wordRepository.findByWordStartingWithAndBookmarkIsNullAndPersonalDictionaryIsNullOrPersonalDictionary(prefix, personalDictionary);
+        List<Word> list = wordRepository.findByWordStartingWithAndPersonalDictionary(prefix, personalDictionary);
+        list.addAll(wordRepository.findByWordStartingWithAndPersonalDictionaryIsNull(prefix));
+        List<PersonalWordRequest> result = new ArrayList<>();
+        for (Word word : list) {
+            if (word instanceof ViWord) {
+                PersonalWordRequest personalWordRequest = new PersonalWordRequest();
+                personalWordRequest.setId(word.getId());
+                personalWordRequest.setWord(word.getWord());
+                personalWordRequest.setDefine(word.getDefine());
+                personalWordRequest.setType(word.getType());
+                personalWordRequest.setBookmarkList(word.getBookmarkList());
+                personalWordRequest.setPersonalDictionary(word.getPersonalDictionary());
+                personalWordRequest.setLang("Vietnamese");
+                result.add(personalWordRequest);
+
+            }
+            if (word instanceof EngWord) {
+                PersonalWordRequest personalWordRequest = new PersonalWordRequest();
+                personalWordRequest.setSpelling(((EngWord) word).getSpelling());
+                personalWordRequest.setId(word.getId());
+                personalWordRequest.setWord(word.getWord());
+                personalWordRequest.setDefine(word.getDefine());
+                personalWordRequest.setType(word.getType());
+                personalWordRequest.setBookmarkList(word.getBookmarkList());
+                personalWordRequest.setPersonalDictionary(word.getPersonalDictionary());
+                personalWordRequest.setLang("English");
+                result.add(personalWordRequest);
+
+            }
+        }
+        return result;
     }
 
 

@@ -1,6 +1,7 @@
 import Config from "@/repository/config";
 import config from "@/repository/config";
 import {useState} from "react";
+import {Word} from "@/types/word/Word";
 
 export const getUserRepository = async (): Promise<UserRegister | null> => {
     try {
@@ -22,4 +23,21 @@ export const getUserRepository = async (): Promise<UserRegister | null> => {
 
     }
 
+}
+
+export const wordSearchUserRepository = async (prefix: string): Promise<Word[]> => {
+    try {
+        const token = localStorage.getItem(config.JWT_COOKIE_NAME);
+        const response = await fetch(`${Config.API_URL}/user/search?prefix=${prefix}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        const data: Word[] = await response.json();
+        return data;
+    } catch (e) {
+
+    }
 }

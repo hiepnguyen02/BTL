@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookmarkService {
@@ -32,30 +33,30 @@ public class BookmarkService {
     }
 
 
-    public Word addWordToBookMark(String token, Word word) {
+    public Word addWordToBookMark(String token, Long id) {
         User user = userService.getUserByToken(token);
         Bookmark bookmark = bookmarkRepository.findByUser(user);
-        if (word instanceof ViWord) {
-            ViWord newWord = new ViWord((ViWord) word);
-            newWord.setBookmark(bookmark);
-            return wordRepository.save(newWord);
-        } else {
-            EngWord newWord = new EngWord((EngWord) word);
-            newWord.setBookmark(bookmark);
-            return wordRepository.save(newWord);
-        }
+        Word word = wordRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Word not found"));
+        word.getBookmarkList().add(bookmark);
+        bookmark.getWordList().add(word);
+        bookmarkRepository.save(bookmark);
+        return wordRepository.save(word);
 
     }
 
     public List<Word> getBookmark(String token) {
         User user = userService.getUserByToken(token);
         Bookmark bookmark = bookmarkRepository.findByUser(user);
-        return wordRepository.findByBookmark(bookmark);
+        return bookmark.getWordList();
 
     }
 
-    public void deleteWordFromBookmark(Long id) {
-        wordRepository.deleteById(id);
+    public void deleteWordFromBookmark(String token, Long id) {
+        User user = userService.getUserByToken(token);
+        Bookmark bookmark = bookmarkRepository.findByUser(user);
+        Word word = wordRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Word not found"));
+        word.getBookmarkList().remove(bookmark);
+        bookmarkRepository.save(bookmark);
     }
 
 }

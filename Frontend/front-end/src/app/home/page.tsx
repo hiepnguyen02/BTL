@@ -22,6 +22,7 @@ import bookIcon from '../../img/home/book.png'
 import editIcon from '../../img/home/edit.png'
 import userIcon from '../../img/home/user.png'
 import checkIcon from '../../img/home/check.png'
+import bookmarkIcon from '../../img/home/bookmark-3.png'
 import Calendar from "react-calendar";
 import {DateCalendar, DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
@@ -145,6 +146,25 @@ export default function Page() {
                                                 Dictionary</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
+                                            <Nav.Link eventKey="bookmark"
+                                                      style={selectedItem != "bookmark" ? {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          color: "black",
+
+
+                                                      } : {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          backgroundColor: "pink",
+                                                          color: "black",
+                                                          fontWeight: "bolder"
+
+                                                      }}>
+                                                <img src={bookmarkIcon.src} style={{width: 30, marginRight: 10}}/>
+                                                Bookmark</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
                                             <Nav.Link eventKey="setting"
                                                       style={selectedItem != "setting" ? {
                                                           fontSize: 18,
@@ -170,7 +190,9 @@ export default function Page() {
                                     <Tab.Content>
                                         <Tab.Pane eventKey="dashBoard">First tab content</Tab.Pane>
                                         <Tab.Pane eventKey="translate"><TranslateTab/></Tab.Pane>
-                                        <Tab.Pane eventKey="dictionary"><DictionaryTab/></Tab.Pane>
+                                        <Tab.Pane eventKey="dictionary"><DictionaryTab
+                                            email={user?.email ? user.email : null}/></Tab.Pane>
+                                        <Tab.Pane eventKey="bookmark"><TranslateTab/></Tab.Pane>
                                         <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
                                     </Tab.Content>
                                 </Col>

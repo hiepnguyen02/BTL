@@ -46,7 +46,7 @@ public class PersonalWordController {
     }
 
     @GetMapping("/get-personal-dictionary")
-    public List<Word> search(@RequestParam String token) {
+    public List<Word> get(@RequestParam String token) {
         return personalDictionaryService.getPersonalDictionary(token);
     }
 

@@ -1,5 +1,6 @@
 package hiep.nguyen.loginWithEmail.controller;
 
+import hiep.nguyen.loginWithEmail.controller.PersonalWordController.PersonalWordRequest;
 import hiep.nguyen.loginWithEmail.entity.Word;
 import hiep.nguyen.loginWithEmail.service.UserService;
 import hiep.nguyen.loginWithEmail.service.WordService;
@@ -26,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/search")
-    public List<Word> search(@RequestParam String prefix, @RequestHeader("Authorization") String token) {
+    public List<PersonalWordRequest> search(@RequestParam String prefix, @RequestHeader("Authorization") String token) {
         return wordService.searchByNameStartingWithByUser(prefix, token.substring(7));
 
     }

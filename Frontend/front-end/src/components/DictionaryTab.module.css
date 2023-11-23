@@ -1,0 +1,24 @@
+.addButton {
+    background-color: hotpink !important;
+    border-color: black;
+    color: black;
+
+}
+
+.addButton:hover {
+    background-color: deeppink !important;
+    border-color: black;
+
+}
+
+.cancelButton {
+    padding: 0;
+    border-color: white;
+    background-color: white !important;
+}
+
+.cancelButton:hover {
+    border-color: white;
+    background-color: lightpink !important;
+    color: white;
+}

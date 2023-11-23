@@ -1,9 +1,22 @@
 .speaker {
     background-color: lightpink !important;
     border: 0;
+
 }
 
 .speaker:hover {
-    background-color: pink !important;
+    background-color: hotpink !important;
     border: 0
 }
+
+.edit {
+    background-color: lightpink !important;
+    border: 0;
+
+}
+
+.edit:hover {
+    background-color: hotpink !important;
+    border: 0
+}
+

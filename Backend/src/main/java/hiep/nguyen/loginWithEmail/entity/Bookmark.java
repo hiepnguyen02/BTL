@@ -19,19 +19,19 @@ public class Bookmark {
     @Id
     @GeneratedValue()
     private Long id;
-    @JsonIgnoreProperties("bookmark")
+    @JsonIgnoreProperties("bookmarkList")
 
-    @OneToMany(mappedBy = "bookmark", cascade = CascadeType.ALL)
-    private List<Word> bookmarkList = new ArrayList<>();
+    @ManyToMany(mappedBy = "bookmarkList")
+    private List<Word> wordList = new ArrayList<>();
     @OneToOne(mappedBy = "bookmark")
     private User user;
 
-    public List<Word> getBookmarkList() {
-        return bookmarkList;
+    public List<Word> getWordList() {
+        return wordList;
     }
 
-    public void setBookmarkList(List<Word> bookmarkList) {
-        this.bookmarkList = bookmarkList;
+    public void setWordList(List<Word> wordList) {
+        this.wordList = wordList;
     }
 
     public Long getId() {

@@ -19,7 +19,7 @@ public class EngWord extends Word {
 
     public EngWord(EngWord engWord) {
         super(engWord.getId(), engWord.getWord(), engWord.getDefine(), engWord.getType(),
-                engWord.getPersonalDictionary(), engWord.getBookmark());
+                engWord.getPersonalDictionary(), engWord.getBookmarkList());
         this.spelling = engWord.spelling;
     }
 

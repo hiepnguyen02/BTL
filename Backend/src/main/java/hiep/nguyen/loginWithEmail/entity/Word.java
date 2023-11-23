@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.List;
 
 @Entity
 @Table(name = "words")
@@ -26,16 +28,18 @@ public abstract class Word {
     @ManyToOne
     @JoinColumn(name = "dictionary_id")
     private PersonalDictionary personalDictionary;
-    @ManyToOne
-    @JoinColumn(name = "bookmark_id")
-    private Bookmark bookmark;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "bookmark_words", joinColumns = @JoinColumn(name = "word_id"),
+            inverseJoinColumns = @JoinColumn(name = "bookmark_id")
+    )
+    private List<Bookmark> bookmarkList = new ArrayList<>();
 
-    public Bookmark getBookmark() {
-        return bookmark;
+    public List<Bookmark> getBookmarkList() {
+        return bookmarkList;
     }
 
-    public void setBookmark(Bookmark bookmark) {
-        this.bookmark = bookmark;
+    public void setBookmarkList(List<Bookmark> bookmarkList) {
+        this.bookmarkList = bookmarkList;
     }
 
     public PersonalDictionary getPersonalDictionary() {

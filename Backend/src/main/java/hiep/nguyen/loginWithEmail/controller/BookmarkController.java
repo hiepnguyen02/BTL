@@ -23,36 +23,23 @@ public class BookmarkController {
 
     @PostMapping("/add-word")
     public Word createWord(@RequestHeader("Authorization") String token,
-                           @RequestBody PersonalWordRequest personalWordRequest) throws ChangeSetPersister.NotFoundException {
-        if (personalWordRequest.getLang().equals("VI")) {
-            ViWord word = new ViWord();
-            word.setWord(personalWordRequest.getWord());
-            word.setDefine(personalWordRequest.getDefine());
-            word.setType(personalWordRequest.getType());
-            return bookmarkService.addWordToBookMark(token.substring(7), word);
+                           @RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
 
-
-        } else {
-            EngWord word = new EngWord();
-            word.setWord(personalWordRequest.getWord());
-            word.setDefine(personalWordRequest.getDefine());
-            word.setType(personalWordRequest.getType());
-            word.setSpelling(personalWordRequest.getSpelling());
-            return bookmarkService.addWordToBookMark(token.substring(7), word);
-
-        }
+        return bookmarkService.addWordToBookMark(token.substring(7), wordId);
 
 
     }
 
     @GetMapping("/get-bookmark")
-    public List<Word> search(@RequestParam String token) {
-        return bookmarkService.getBookmark(token);
+    public List<Word> getBookmark(@RequestHeader("Authorization") String token) {
+
+        return bookmarkService.getBookmark(token.substring(7));
     }
 
     @PostMapping("/delete-word")
-    public ResponseEntity<Boolean> deleteWord(@RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
-        bookmarkService.deleteWordFromBookmark(wordId);
+    public ResponseEntity<Boolean> deleteWord(@RequestHeader("Authorization") String token,
+                                              @RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
+        bookmarkService.deleteWordFromBookmark(token.substring(7), wordId);
         return ResponseEntity.ok(true);
     }
 }

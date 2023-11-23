@@ -68,10 +68,12 @@ public class PersonalDictionaryService {
     public Word updateWord(PersonalWordRequest personalWordRequest) {
         Word word = wordRepository.findById(personalWordRequest.getId())
                 .orElseThrow(() -> new UsernameNotFoundException("Word not found"));
-        ;
         word.setWord(personalWordRequest.getWord());
         word.setDefine(personalWordRequest.getDefine());
         word.setType(personalWordRequest.getType());
+        if (word instanceof EngWord) {
+            ((EngWord) word).setSpelling(personalWordRequest.getSpelling());
+        }
         return wordRepository.save(word);
 
     }

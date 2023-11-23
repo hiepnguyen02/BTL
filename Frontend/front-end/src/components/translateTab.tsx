@@ -88,12 +88,12 @@ export default function TranslateTab() {
                             overflow: "scroll"
                         }} className={"mt-4"}>
                             <Col>
-                                <Form.Control size={"lg"}
-                                              style={{border: "none", paddingLeft: 0, backgroundColor: "transparent"}}
-                                              className={"shadow-none"}
-                                              placeholder={"Type here to translate!"}
-                                              value={translateValue}
-                                              onChange={(value) => handleInputChange(value)}
+                                <Form.Control
+                                    style={{border: "none", paddingLeft: 0, backgroundColor: "transparent"}}
+                                    className={"shadow-none"}
+                                    placeholder={"Type here to translate!"}
+                                    value={translateValue}
+                                    onChange={(value) => handleInputChange(value)}
                                 />
 
                             </Col>

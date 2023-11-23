@@ -1,6 +1,5 @@
 package hiep.nguyen.loginWithEmail.repository;
 
-import hiep.nguyen.loginWithEmail.entity.Bookmark;
 import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
 import hiep.nguyen.loginWithEmail.entity.Word;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,11 +10,14 @@ import java.util.Optional;
 
 @Repository
 public interface WordRepository extends JpaRepository<Word, Long> {
-    List<Word> findByWordStartingWithAndPersonalDictionaryIsNullAndBookmarkIsNull(String prefix);
 
-    List<Word> findByWordStartingWithAndBookmarkIsNullAndPersonalDictionaryIsNullOrPersonalDictionary(String prefix, PersonalDictionary personalDictionary);
+    List<Word> findByWordStartingWithAndPersonalDictionaryIsNullAndBookmarkListIsNull(String prefix);
+
+    List<Word> findByWordStartingWithAndPersonalDictionaryIsNull(String prefix);
+
+    List<Word> findByWordStartingWithAndPersonalDictionary(String prefix, PersonalDictionary personalDictionary);
 
     List<Word> findByPersonalDictionary(PersonalDictionary personalDictionary);
 
-    List<Word> findByBookmark(Bookmark bookmark);
+//    List<Word> findByBookmark(Bookmark bookmark);
 }
