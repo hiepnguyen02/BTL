@@ -22,8 +22,8 @@ public class BookmarkController {
 
 
     @PostMapping("/add-word")
-    public Word createWord(@RequestHeader("Authorization") String token,
-                           @RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
+    public PersonalWordRequest createWord(@RequestHeader("Authorization") String token,
+                                          @RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
 
         return bookmarkService.addWordToBookMark(token.substring(7), wordId);
 
@@ -31,15 +31,15 @@ public class BookmarkController {
     }
 
     @GetMapping("/get-bookmark")
-    public List<Word> getBookmark(@RequestHeader("Authorization") String token) {
+    public List<PersonalWordRequest> getBookmark(@RequestHeader("Authorization") String token) {
 
         return bookmarkService.getBookmark(token.substring(7));
     }
 
     @PostMapping("/delete-word")
-    public ResponseEntity<Boolean> deleteWord(@RequestHeader("Authorization") String token,
-                                              @RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
-        bookmarkService.deleteWordFromBookmark(token.substring(7), wordId);
-        return ResponseEntity.ok(true);
+    public PersonalWordRequest deleteWord(@RequestHeader("Authorization") String token,
+                                          @RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
+        return bookmarkService.deleteWordFromBookmark(token.substring(7), wordId);
+
     }
 }

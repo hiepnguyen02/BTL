@@ -47,7 +47,7 @@ public class PersonalWordController {
 
     @GetMapping("/get-personal-dictionary")
     public List<Word> get(@RequestParam String token) {
-        return personalDictionaryService.getPersonalDictionary(token);
+        return personalDictionaryService.getPersonalDictionary(token.substring(7));
     }
 
     @PostMapping("/delete-word")
@@ -57,10 +57,15 @@ public class PersonalWordController {
     }
 
     @PostMapping("/update-word")
-    public Word createWord(
+    public PersonalWordRequest updateWord(
             @RequestBody PersonalWordRequest personalWordRequest) throws ChangeSetPersister.NotFoundException {
         return personalDictionaryService.updateWord(personalWordRequest);
 
 
+    }
+
+    @PostMapping("/get-word")
+    public PersonalWordRequest getWord(@RequestBody Long wordId) throws ChangeSetPersister.NotFoundException {
+        return personalDictionaryService.getWordService(wordId);
     }
 }

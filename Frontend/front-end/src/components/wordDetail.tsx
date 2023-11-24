@@ -5,12 +5,17 @@ import speakerIcon from "@/img/home/marketing.png";
 import styles from './WordDetail.module.css'
 import editIcon from "@/img/home/edit.png";
 import remove from "@/img/home/delete-2.png";
+import bookmarkIcon from "@/img/home/bookmark.png";
+import addedBookmarkIcon from "@/img/home/bookmark-2.png";
 import {Word} from "@/types/word/Word";
 import {Lang} from "@/types/Lang";
 import {useEffect, useState} from "react";
-import {addWordService, updateWordService} from "@/service/WordService/wordService";
-import {valueOf} from "node";
-import {ChildProp} from "next/dist/server/app-render/types";
+import {
+    addWordService,
+    addWordToBookMarkService, deleteWordService, getWordService,
+    removeWordFromBookmarkService,
+    updateWordService
+} from "@/service/WordService/wordService";
 
 
 export default function WordDetail({
@@ -19,23 +24,51 @@ export default function WordDetail({
                                        setShowNoti,
                                        setProgress1,
                                        setUpdateNoti,
-                                       setRemoveNoti
+                                       setRemoveNoti,
+                                       user,
+                                       selectedTab
                                    }) {
     const synthesis = window.speechSynthesis;
-    const [word, setWord] = useState(chosenWord);
     const [isShowModal, setIsShowModal] = useState<boolean>(false);
     const [isShowDeleteModal, setIsDeleteShowModal] = useState<boolean>(false);
     const [wordToAdd, setWordToAdd] = useState<Word | null>(
         chosenWord
     );
+
     const [isShowNoti, setIsShowNoti] = useState(false);
     const [progress, setProgress] = useState(0);
     const handleUpdateWord = () => {
         updateWordService(wordToAdd).then((e) => {
-            console.log(e);
+            setChosenWord(e);
+        })
+
+    }
+    const handleAddWordToBookmark = () => {
+        addWordToBookMarkService(chosenWord.id).then((e) => {
+            setChosenWord({...chosenWord, bookmarkList: e.bookmarkList});
+        });
+    }
+    const handleDeleteWordFromBookmark = () => {
+        removeWordFromBookmarkService(chosenWord.id).then((e) => {
+            setChosenWord({...chosenWord, bookmarkList: e.bookmarkList})
+        });
+    }
+    const handleDeleteWordFromDictionary = () => {
+        deleteWordService(chosenWord.id).then(() => {
         })
     }
-    const [isDeleted, setIsDeleted] = useState(false);
+    // useEffect(() => {
+    //     setWordToAdd(word)
+    // }, [word]);
+
+
+    useEffect(() => {
+        if (selectedTab == 'dictionary') {
+            getWordService(chosenWord.id).then((e) => {
+                setChosenWord(e);
+            })
+        }
+    }, [selectedTab]);
 
     useEffect(() => {
         const decreaseProgress = () => {
@@ -69,7 +102,7 @@ export default function WordDetail({
         }
     }
     return (
-        <>{word != null ? <Container style={{
+        <>{chosenWord != null ? <Container style={{
             borderRadius: 13, padding: 20, border: "solid", background: "lightpink", maxHeight: "60vh",
             overflow: "scroll"
         }}>
@@ -79,8 +112,9 @@ export default function WordDetail({
                 <Col>
                     <Row>
                         <Col className={"h1 fw-bolder font-monospace"}>
-                            {word.word}
+                            {chosenWord.word}
                         </Col>
+
 
                     </Row>
                     <Row className={"align-items-center"}>
@@ -92,44 +126,88 @@ export default function WordDetail({
                             </Button>
                         </Col>
                         <Col xs="auto" className={"font-monospace fw-bolder"} style={{color: "gray"}}>
-                            {word.spelling}
+                            {chosenWord.spelling}
                         </Col>
                     </Row>
                     <Row className={"mt-2"}>
                         <Col className={" h5 font-monospace "} style={{fontStyle: "italic"}}>
-                            {word.type}
+                            {chosenWord.type}
                         </Col>
                     </Row>
                     <Row className={"mt-1"}>
                         <Col className={"font-monospace"}>
-                            {word.define}
+                            {chosenWord.define}
                         </Col>
                     </Row>
                 </Col>
                 {
-                    word.personalDictionary ?
+                    chosenWord.personalDictionary ?
                         <Col xs={1}>
+                            <Row>
+                                <Col> <Button className={styles.edit}
+                                              onClick={() => setIsShowModal(true)}
+                                >
+                                    <img src={editIcon.src} style={{width: 40, margin: 0}}/>
+                                </Button></Col>
+                                <Col><Button className={styles.edit}
+                                             onClick={() => {
+                                                 setIsDeleteShowModal(true);
+
+                                             }}
+                                >
+                                    <img src={remove.src} style={{width: 40, margin: 0}}
+                                    />
+                                </Button></Col>
+                                <Col><Button className={styles.edit}
+                                             onClick={() => {
+                                                 if (!chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email)) {
+                                                     handleAddWordToBookmark();
+                                                 } else {
+                                                     handleDeleteWordFromBookmark();
+                                                 }
+                                             }}
+                                >
+                                    {
+                                        chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email) ?
+                                            <img src={addedBookmarkIcon.src}
+                                                 style={{width: 40, margin: 0,}}
+                                            /> : <img src={bookmarkIcon.src} style={{width: 40, margin: 0}}
+                                            />
+                                    }
+
+
+                                </Button></Col>
+                            </Row>
+
+
+                        </Col> : <Col xs={1}>
                             <Row className={"justify-content-end"}>
                                 <Col xs={"auto"} className={"p-0"}>
-                                    <Button className={styles.edit}
-                                            onClick={() => setIsShowModal(true)}
-                                    >
-                                        <img src={editIcon.src} style={{width: 40, margin: 0}}/>
-                                    </Button>
+
                                     <Button className={styles.edit}
                                             onClick={() => {
-                                                setIsDeleteShowModal(true);
+                                                if (!chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email)) {
+                                                    handleAddWordToBookmark();
+                                                } else {
+                                                    handleDeleteWordFromBookmark();
+                                                }
 
                                             }}
                                     >
-                                        <img src={remove.src} style={{width: 40, margin: 0}}
-                                        />
+                                        {
+                                            chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email) ?
+                                                <img src={addedBookmarkIcon.src} style={{width: 40, margin: 0}}
+                                                /> : <img src={bookmarkIcon.src} style={{width: 40, margin: 0}}
+                                                />
+                                        }
+
+
                                     </Button>
 
                                 </Col>
                             </Row>
 
-                        </Col> : null
+                        </Col>
                 }
             </Row>
 
@@ -167,6 +245,7 @@ export default function WordDetail({
                                 borderStyle: "solid"
                             }} onChange={value => {
                                 setWordToAdd({
+                                    bookmarkList: wordToAdd != null ? wordToAdd.bookmarkList : null,
                                     personalDictionary: {id: wordToAdd != null ? wordToAdd.personalDictionary.id : null,},
                                     id: wordToAdd != null ? wordToAdd.id : null,
                                     word: value.target.value,
@@ -193,6 +272,7 @@ export default function WordDetail({
                             }}
                                           onChange={value => {
                                               setWordToAdd({
+                                                  bookmarkList: wordToAdd != null ? wordToAdd.bookmarkList : null,
                                                   personalDictionary: {id: wordToAdd != null ? wordToAdd.personalDictionary.id : null,},
                                                   id: wordToAdd != null ? wordToAdd.id : null,
                                                   word: wordToAdd != null ? wordToAdd.word : null,
@@ -216,6 +296,7 @@ export default function WordDetail({
                                 borderStyle: "solid"
                             }} onChange={value => {
                                 setWordToAdd({
+                                    bookmarkList: wordToAdd != null ? wordToAdd.bookmarkList : null,
                                     personalDictionary: {id: wordToAdd != null ? wordToAdd.personalDictionary.id : null,},
 
                                     id: wordToAdd != null ? wordToAdd.id : null,
@@ -240,6 +321,7 @@ export default function WordDetail({
                                 borderStyle: "solid"
                             }} onChange={value => {
                                 setWordToAdd({
+                                    bookmarkList: wordToAdd != null ? wordToAdd.bookmarkList : null,
                                     personalDictionary: {id: wordToAdd != null ? wordToAdd.personalDictionary.id : null,},
                                     id: wordToAdd != null ? wordToAdd.id : null,
                                     word: wordToAdd != null ? wordToAdd.word : null,
@@ -272,7 +354,6 @@ export default function WordDetail({
                             onClick={() => {
                                 if (wordToAdd?.word != null) {
                                     handleUpdateWord();
-                                    setWord(wordToAdd);
                                     setIsShowModal(false);
                                     setProgress1(100);
                                     setShowNoti(true);
@@ -317,13 +398,11 @@ export default function WordDetail({
                         width: "48%",
                     }}
                             onClick={() => {
-
+                                handleDeleteWordFromDictionary();
                                 setChosenWord(null);
                                 setProgress1(100);
                                 setShowNoti(true);
                                 setRemoveNoti(true);
-
-
                             }
                             }
                     >Remove</Button>

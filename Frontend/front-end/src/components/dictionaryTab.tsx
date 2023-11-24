@@ -9,7 +9,7 @@ import cancelIcon from '../img/home/cancel.png'
 import personalWord from '../img/home/word-of-mouth.png'
 import {useCallback, useEffect, useState} from "react";
 import {loginService} from "@/service/AuthenticationService/loginService";
-import {addWordService, searchWordService} from "@/service/WordService/wordService";
+import {addWordService, getWordService, searchWordService} from "@/service/WordService/wordService";
 import {debounce, ListItem} from "@mui/material";
 import WordDetail from "@/components/wordDetail";
 import styles from './DictionaryTab.module.css'
@@ -19,7 +19,7 @@ import {searchWordUserService} from "@/service/UserService/userService";
 import {Word} from "@/types/word/Word";
 import {boolean} from "zod";
 
-export default function DictionaryTab(user: UserRegister) {
+export default function DictionaryTab({user, selectedTab}) {
     const [searchValue, setSearchValue] = useState<string>("");
     const [error, setError] = useState<string | null>("");
     const [result, setResult] = useState<Word[]>([]);
@@ -27,6 +27,7 @@ export default function DictionaryTab(user: UserRegister) {
     const [isShowModal, setIsShowModal] = useState<boolean>(false);
     const [chosenWord, setChosenWord] = useState<Word | null>();
     const [wordToAdd, setWordToAdd] = useState<Word | null>({
+            bookmarkList: [],
             personalDictionary: {id: null},
             id: null,
             word: null,
@@ -40,11 +41,6 @@ export default function DictionaryTab(user: UserRegister) {
     const [updateNoti, setUpdateNoti] = useState(false);
     const [removeNoti, setRemoveNoti] = useState(false);
     const [progress, setProgress] = useState(0);
-    useEffect(() => {
-        return () => {
-            console.log(user.email);
-        };
-    }, [user]);
 
 
     useEffect(() => {
@@ -94,8 +90,11 @@ export default function DictionaryTab(user: UserRegister) {
             console.log(e);
         })
     }
+
+
     return (
         <>
+
             <Container className={"mt-4 justify-content-center"}>
 
 
@@ -255,6 +254,7 @@ export default function DictionaryTab(user: UserRegister) {
                                 <WordDetail setChosenWord={setChosenWord} chosenWord={chosenWord}
                                             setShowNoti={setIsShowNoti} setProgress1={setProgress}
                                             setUpdateNoti={setUpdateNoti} setRemoveNoti={setRemoveNoti}
+                                            user={user} selectedTab={selectedTab}
                                 />
 
                             </Col>
@@ -295,6 +295,7 @@ export default function DictionaryTab(user: UserRegister) {
                                     borderStyle: "solid"
                                 }} onChange={value => {
                                     setWordToAdd({
+                                        bookmarkList: [],
                                         personalDictionary: {id: null},
                                         id: null,
                                         word: value.target.value,
@@ -320,6 +321,7 @@ export default function DictionaryTab(user: UserRegister) {
                                 }}
                                               onChange={value => {
                                                   setWordToAdd({
+                                                      bookmarkList: [],
                                                       personalDictionary: {id: null},
                                                       id: null,
                                                       word: wordToAdd != null ? wordToAdd.word : null,
@@ -343,6 +345,7 @@ export default function DictionaryTab(user: UserRegister) {
                                     borderStyle: "solid"
                                 }} onChange={value => {
                                     setWordToAdd({
+                                        bookmarkList: [],
                                         personalDictionary: {id: null},
 
                                         id: null,
@@ -395,6 +398,7 @@ export default function DictionaryTab(user: UserRegister) {
                                     borderStyle: "solid"
                                 }} onChange={value => {
                                     setWordToAdd({
+                                        bookmarkList: [],
                                         personalDictionary: {id: null},
                                         id: null,
                                         word: wordToAdd != null ? wordToAdd.word : null,

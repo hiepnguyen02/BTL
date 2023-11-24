@@ -120,7 +120,7 @@ public class WordService {
                         word.setDefine(word.getDefine() + "\n" + line.substring(index + 1, line.length()));
 
                     } else {
-                        word.setDefine(word.getDefine() + "\n" + line.substring(1, line.length()));
+                        word.setDefine(word.getDefine() + "\n " + line.substring(1, line.length()));
 
                     }
 
@@ -192,12 +192,12 @@ public class WordService {
 
     }
 
-//    @PostConstruct
-//    @Transactional
-//    public void loadWordFromFile() throws IOException {
-//        loadEngWordFromFile();
-//        loadViWordFromFile();
-//    }
+    @PostConstruct
+    @Transactional
+    public void loadWordFromFile() throws IOException {
+        loadEngWordFromFile();
+        loadViWordFromFile();
+    }
 
 
 }

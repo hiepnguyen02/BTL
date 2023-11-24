@@ -55,7 +55,7 @@ export const addWordRepository = async (word: Word): Promise<Word> => {
         throw new Error('An error occurred during add word');
     }
 }
-export const updateWordRepository = async (word: Word): Promise<void> => {
+export const updateWordRepository = async (word: Word): Promise<Word> => {
     try {
         const token = localStorage.getItem(config.JWT_COOKIE_NAME);
         const response = await fetch(`${Config.API_URL}/user/dictionary/update-word`, {
@@ -69,9 +69,111 @@ export const updateWordRepository = async (word: Word): Promise<void> => {
             body: JSON.stringify(word),
 
         });
-
+        const data: Word = await response.json();
+        return data;
 
     } catch (error) {
         throw new Error('An error occurred during update word');
+    }
+}
+export const deleteWordRepository = async (id: number): Promise<void> => {
+    try {
+        const token = localStorage.getItem(config.JWT_COOKIE_NAME);
+        const response = await fetch(`${Config.API_URL}/user/dictionary/delete-word`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+
+            },
+
+            body: JSON.stringify(id),
+
+        });
+
+
+    } catch (error) {
+        throw new Error('An error occurred during delete word');
+    }
+}
+export const getWordRepository = async (id: number): Promise<Word> => {
+    try {
+        const token = localStorage.getItem(config.JWT_COOKIE_NAME);
+        const response = await fetch(`${Config.API_URL}/user/dictionary/get-word`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+
+            },
+
+            body: JSON.stringify(id),
+
+        });
+        const data: Word = await response.json();
+        return data
+
+
+    } catch (error) {
+        throw new Error('An error occurred during remove word from bookmark');
+    }
+}
+export const addToBookmark = async (id: number): Promise<Word> => {
+    try {
+        const token = localStorage.getItem(config.JWT_COOKIE_NAME);
+        const response = await fetch(`${Config.API_URL}/user/bookmark/add-word`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+
+            },
+
+            body: JSON.stringify(id),
+
+        });
+        return response.json();
+
+
+    } catch (error) {
+        throw new Error('An error occurred during add word to bookmark');
+    }
+}
+export const removeFromBookmarkRepository = async (id: number): Promise<Word> => {
+    try {
+        const token = localStorage.getItem(config.JWT_COOKIE_NAME);
+        const response = await fetch(`${Config.API_URL}/user/bookmark/delete-word`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+
+            },
+
+            body: JSON.stringify(id),
+
+        });
+        return response.json();
+
+
+    } catch (error) {
+        throw new Error('An error occurred during remove word from bookmark');
+    }
+}
+
+export const getBookmarkListRepository = async (): Promise<Word[]> => {
+    try {
+        const token = localStorage.getItem(config.JWT_COOKIE_NAME);
+        const response = await fetch(`${Config.API_URL}/user/bookmark/get-bookmark`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        const data: Word[] = await response.json();
+        return data;
+    } catch (e) {
+
     }
 }

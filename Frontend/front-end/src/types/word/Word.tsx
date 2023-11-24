@@ -7,6 +7,7 @@ export interface Word {
     spelling: string | null;
     type: string | null;
     lang: Lang | null;
+    bookmarkList: [] | null;
 
     personalDictionary: {
         id: number | null;

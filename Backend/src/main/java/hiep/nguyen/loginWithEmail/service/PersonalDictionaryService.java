@@ -65,7 +65,7 @@ public class PersonalDictionaryService {
         wordRepository.deleteById(id);
     }
 
-    public Word updateWord(PersonalWordRequest personalWordRequest) {
+    public PersonalWordRequest updateWord(PersonalWordRequest personalWordRequest) {
         Word word = wordRepository.findById(personalWordRequest.getId())
                 .orElseThrow(() -> new UsernameNotFoundException("Word not found"));
         word.setWord(personalWordRequest.getWord());
@@ -74,9 +74,63 @@ public class PersonalDictionaryService {
         if (word instanceof EngWord) {
             ((EngWord) word).setSpelling(personalWordRequest.getSpelling());
         }
-        return wordRepository.save(word);
+        wordRepository.save(word);
+        if (word instanceof ViWord) {
+            PersonalWordRequest personalWordRequest1 = new PersonalWordRequest();
+            personalWordRequest1.setId(word.getId());
+            personalWordRequest1.setWord(word.getWord());
+            personalWordRequest1.setDefine(word.getDefine());
+            personalWordRequest1.setType(word.getType());
+            personalWordRequest1.setBookmarkList(word.getBookmarkList());
+            personalWordRequest1.setPersonalDictionary(word.getPersonalDictionary());
+            personalWordRequest1.setLang("Vietnamese");
+            return personalWordRequest1;
+
+        } else {
+            PersonalWordRequest personalWordRequest1 = new PersonalWordRequest();
+            personalWordRequest1.setSpelling(((EngWord) word).getSpelling());
+            personalWordRequest1.setId(word.getId());
+            personalWordRequest1.setWord(word.getWord());
+            personalWordRequest1.setDefine(word.getDefine());
+            personalWordRequest1.setType(word.getType());
+            personalWordRequest1.setBookmarkList(word.getBookmarkList());
+            personalWordRequest1.setPersonalDictionary(word.getPersonalDictionary());
+            personalWordRequest1.setLang("English");
+            return personalWordRequest1;
+
+        }
 
     }
 
+    public PersonalWordRequest getWordService(Long id) {
+        Word word = wordRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Word not found"));
+        if (word instanceof ViWord) {
+            PersonalWordRequest personalWordRequest = new PersonalWordRequest();
+            personalWordRequest.setId(word.getId());
+            personalWordRequest.setWord(word.getWord());
+            personalWordRequest.setDefine(word.getDefine());
+            personalWordRequest.setType(word.getType());
+            personalWordRequest.setBookmarkList(word.getBookmarkList());
+            personalWordRequest.setPersonalDictionary(word.getPersonalDictionary());
+            personalWordRequest.setLang("Vietnamese");
+            System.out.println(personalWordRequest.getWord());
+            return personalWordRequest;
+
+        } else {
+            PersonalWordRequest personalWordRequest = new PersonalWordRequest();
+            personalWordRequest.setSpelling(((EngWord) word).getSpelling());
+            personalWordRequest.setId(word.getId());
+            personalWordRequest.setWord(word.getWord());
+            personalWordRequest.setDefine(word.getDefine());
+            personalWordRequest.setType(word.getType());
+            personalWordRequest.setBookmarkList(word.getBookmarkList());
+            personalWordRequest.setPersonalDictionary(word.getPersonalDictionary());
+            personalWordRequest.setLang("English");
+            System.out.println(personalWordRequest.getWord());
+            return personalWordRequest;
+
+        }
+    }
 
 }

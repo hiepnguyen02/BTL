@@ -35,6 +35,7 @@ import config from "@/repository/config";
 import {getUserByTokenService} from "@/service/UserService/userService";
 import Link from "next/link";
 import Config from "@/repository/config";
+import BookmarkTab from "@/components/bookmarkTab";
 
 export default function Page() {
     const router = useRouter();
@@ -191,8 +192,9 @@ export default function Page() {
                                         <Tab.Pane eventKey="dashBoard">First tab content</Tab.Pane>
                                         <Tab.Pane eventKey="translate"><TranslateTab/></Tab.Pane>
                                         <Tab.Pane eventKey="dictionary"><DictionaryTab
-                                            email={user?.email ? user.email : null}/></Tab.Pane>
-                                        <Tab.Pane eventKey="bookmark"><TranslateTab/></Tab.Pane>
+                                            user={user} selectedTab={selectedItem}/></Tab.Pane>
+                                        <Tab.Pane eventKey="bookmark"><BookmarkTab user={user}
+                                                                                   selectedTab={selectedItem}/></Tab.Pane>
                                         <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
                                     </Tab.Content>
                                 </Col>

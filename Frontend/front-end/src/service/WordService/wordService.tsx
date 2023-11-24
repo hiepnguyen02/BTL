@@ -1,7 +1,8 @@
 import {loginRepository} from "@/repository/AuthenticationRepository/loginRepository";
 import Config from "@/repository/config";
 import {
-    addWordRepository,
+    addToBookmark,
+    addWordRepository, deleteWordRepository, getBookmarkListRepository, getWordRepository, removeFromBookmarkRepository,
     updateWordRepository,
     wordSearchRepository
 } from "@/repository/WordRepository/wordRepository";
@@ -45,13 +46,64 @@ export const addWordService = async (wordToAdd: Word | null):
     }
 };
 export const updateWordService = async (word: Word | null):
-    Promise<void> => {
+    Promise<Word> => {
     try {
 
         const response = await updateWordRepository(word);
+        return response;
 
 
     } catch (error) {
-        
+
+    }
+};
+export const deleteWordService = async (id: number):
+    Promise<void> => {
+    try {
+        await deleteWordRepository(id);
+    } catch (error) {
+
+    }
+};
+export const getWordService = async (id: number):
+    Promise<Word> => {
+    try {
+        const result: Word = await getWordRepository(id);
+        return result;
+    } catch (error) {
+
+    }
+};
+export const addWordToBookMarkService = async (id: number):
+    Promise<Word> => {
+    try {
+
+        const response = await addToBookmark(id);
+        return response;
+
+    } catch (error) {
+
+    }
+};
+export const removeWordFromBookmarkService = async (id: number):
+    Promise<Word> => {
+    try {
+
+        const response = await removeFromBookmarkRepository(id);
+        return response;
+
+    } catch (error) {
+
+    }
+};
+export const getBookmarkListService = async ():
+    Promise<Word[]> => {
+    try {
+
+        const response = await getBookmarkListRepository();
+        return response;
+
+    } catch (error) {
+
     }
 };

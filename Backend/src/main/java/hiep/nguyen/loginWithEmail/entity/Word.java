@@ -1,5 +1,6 @@
 package hiep.nguyen.loginWithEmail.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,16 +28,19 @@ public abstract class Word {
     private String type;
     @ManyToOne
     @JoinColumn(name = "dictionary_id")
+    @JsonIgnoreProperties("personalList")
     private PersonalDictionary personalDictionary;
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "bookmark_words", joinColumns = @JoinColumn(name = "word_id"),
             inverseJoinColumns = @JoinColumn(name = "bookmark_id")
     )
+    @JsonIgnore
     private List<Bookmark> bookmarkList = new ArrayList<>();
 
     public List<Bookmark> getBookmarkList() {
         return bookmarkList;
     }
+
 
     public void setBookmarkList(List<Bookmark> bookmarkList) {
         this.bookmarkList = bookmarkList;

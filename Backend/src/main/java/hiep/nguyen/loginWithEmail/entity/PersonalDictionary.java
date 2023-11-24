@@ -24,6 +24,7 @@ public class PersonalDictionary {
 
     @OneToMany(mappedBy = "personalDictionary", cascade = CascadeType.ALL)
     private List<Word> personalList = new ArrayList<>();
+    @JsonIgnoreProperties("personalDictionary")
     @OneToOne(mappedBy = "personalDictionary")
     private User user;
 
