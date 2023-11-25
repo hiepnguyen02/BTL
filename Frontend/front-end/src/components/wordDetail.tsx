@@ -183,7 +183,6 @@ export default function WordDetail({
                         </Col> : <Col xs={1}>
                             <Row className={"justify-content-end"}>
                                 <Col xs={"auto"} className={"p-0"}>
-
                                     <Button className={styles.edit}
                                             onClick={() => {
                                                 if (!chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email)) {

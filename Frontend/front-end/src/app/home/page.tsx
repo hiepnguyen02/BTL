@@ -23,6 +23,7 @@ import editIcon from '../../img/home/edit.png'
 import userIcon from '../../img/home/user.png'
 import checkIcon from '../../img/home/check.png'
 import bookmarkIcon from '../../img/home/bookmark-3.png'
+import puzzleIcon from '../../img/home/jigsaw.png'
 import Calendar from "react-calendar";
 import {DateCalendar, DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
@@ -36,6 +37,7 @@ import {getUserByTokenService} from "@/service/UserService/userService";
 import Link from "next/link";
 import Config from "@/repository/config";
 import BookmarkTab from "@/components/bookmarkTab";
+import PuzzleGameTab from "@/components/puzzleGameTab";
 
 export default function Page() {
     const router = useRouter();
@@ -166,6 +168,25 @@ export default function Page() {
                                                 Bookmark</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
+                                            <Nav.Link eventKey="puzzleGame"
+                                                      style={selectedItem != "puzzleGame" ? {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          color: "black",
+
+
+                                                      } : {
+                                                          fontSize: 18,
+                                                          fontFamily: "monospace",
+                                                          backgroundColor: "pink",
+                                                          color: "black",
+                                                          fontWeight: "bolder"
+
+                                                      }}>
+                                                <img src={puzzleIcon.src} style={{width: 30, marginRight: 10}}/>
+                                                Puzzle Game</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
                                             <Nav.Link eventKey="setting"
                                                       style={selectedItem != "setting" ? {
                                                           fontSize: 18,
@@ -195,6 +216,7 @@ export default function Page() {
                                             user={user} selectedTab={selectedItem}/></Tab.Pane>
                                         <Tab.Pane eventKey="bookmark"><BookmarkTab user={user}
                                                                                    selectedTab={selectedItem}/></Tab.Pane>
+                                        <Tab.Pane eventKey="puzzleGame"><PuzzleGameTab/></Tab.Pane>
                                         <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
                                     </Tab.Content>
                                 </Col>

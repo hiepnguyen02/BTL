@@ -192,12 +192,12 @@ public class WordService {
 
     }
 
-    @PostConstruct
-    @Transactional
-    public void loadWordFromFile() throws IOException {
-        loadEngWordFromFile();
-        loadViWordFromFile();
-    }
+//    @PostConstruct
+//    @Transactional
+//    public void loadWordFromFile() throws IOException {
+//        loadEngWordFromFile();
+//        loadViWordFromFile();
+//    }
 
 
 }
