@@ -6,13 +6,8 @@ import {Button, Col, Form, Image, Alert, Navbar, NavbarToggle, NavItem, Nav, Tab
 import loginImage from '../../img/login/login.png'
 import dictionary from '../../img/login/dictionary.png'
 import {auto} from "@popperjs/core";
-import {useEffect, useState} from "react";
-import {loginService} from "@/service/AuthenticationService/loginService";
-import {loginRepository} from "@/repository/AuthenticationRepository/loginRepository";
-import {log} from "util";
-import {registerService} from "@/service/AuthenticationService/registerService";
-import {set} from "zod";
-import {router} from "next/client";
+import React, {useEffect, useState} from "react";
+
 import {useRouter} from "next/navigation";
 import homeIcon from '../../img/home/homeIcon.png'
 import dashBoardIcon from '../../img/home/dashboard.png'
@@ -24,13 +19,13 @@ import userIcon from '../../img/home/user.png'
 import checkIcon from '../../img/home/check.png'
 import bookmarkIcon from '../../img/home/bookmark-3.png'
 import puzzleIcon from '../../img/home/jigsaw.png'
+import logoutIcon from '../../img/home/logout.png'
 import Calendar from "react-calendar";
 import {DateCalendar, DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import DictionaryTab from "@/components/dictionaryTab";
-import {TextField} from "@mui/material";
-import styles from './Page.module.css'
+
 import TranslateTab from "@/components/translateTab";
 import config from "@/repository/config";
 import {getUserByTokenService} from "@/service/UserService/userService";
@@ -38,6 +33,9 @@ import Link from "next/link";
 import Config from "@/repository/config";
 import BookmarkTab from "@/components/bookmarkTab";
 import PuzzleGameTab from "@/components/puzzleGameTab";
+import FlashcardBoardTab from "@/components/FlashcardBoardTab";
+import styles from "@/components/PuzzleGameTab.module.css";
+
 
 export default function Page() {
     const router = useRouter();
@@ -52,7 +50,7 @@ export default function Page() {
 
     }, [],)
 
-    const [selectedItem, setSelectedItem] = useState('dictionary');
+    const [selectedItem, setSelectedItem] = useState('dashBoard');
 
     const handleSelect = (selectedKey: string) => {
         setSelectedItem(selectedKey);
@@ -77,7 +75,7 @@ export default function Page() {
                        }}>
                 <Row>
                     <Col md={9}>
-                        <Tab.Container defaultActiveKey="dictionary">
+                        <Tab.Container defaultActiveKey="dashBoard">
                             <Row>
                                 <Col md={3}>
 
@@ -210,13 +208,13 @@ export default function Page() {
                                 </Col>
                                 <Col>
                                     <Tab.Content>
-                                        <Tab.Pane eventKey="dashBoard">First tab content</Tab.Pane>
+                                        <Tab.Pane eventKey="dashBoard"><FlashcardBoardTab user={user}/></Tab.Pane>
                                         <Tab.Pane eventKey="translate"><TranslateTab/></Tab.Pane>
                                         <Tab.Pane eventKey="dictionary"><DictionaryTab
                                             user={user} selectedTab={selectedItem}/></Tab.Pane>
                                         <Tab.Pane eventKey="bookmark"><BookmarkTab user={user}
                                                                                    selectedTab={selectedItem}/></Tab.Pane>
-                                        <Tab.Pane eventKey="puzzleGame"><PuzzleGameTab/></Tab.Pane>
+                                        <Tab.Pane eventKey="puzzleGame"><PuzzleGameTab user={user}/></Tab.Pane>
                                         <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
                                     </Tab.Content>
                                 </Col>
@@ -250,11 +248,22 @@ export default function Page() {
                                         </text>
                                     </Col>
                                     <Col xs={2}>
-                                        <img src={editIcon.src} style={{width: 26}}/>
+
+                                        <Button variant="warning" type="submit" style={{
+                                            borderRadius: 18,
+                                        }}
+                                                onClick={() => {
+                                                    localStorage.removeItem(config.JWT_COOKIE_NAME);
+                                                    router.push("/")
+
+                                                }}
+                                                className={styles.logoutButton}>
+                                            <img src={logoutIcon.src} style={{width: 40,}}/>
+                                        </Button>
                                     </Col>
                                 </Row>
-                                <Row xs="auto" className={"justify-content-center mt-5"}>
-                                    <img src={userIcon.src} style={{width: 160}}/>
+                                <Row xs="auto" className={"justify-content-center mt-5 align-items-center"}>
+                                    <img src={userIcon.src} style={{width: 160,}}/>
                                 </Row>
                                 <Row className={"mt-3 justify-content-center"}>
                                     <Col xs="auto">

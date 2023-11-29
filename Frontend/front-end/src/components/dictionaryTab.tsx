@@ -225,7 +225,7 @@ export default function DictionaryTab({user, selectedTab}) {
                                     <Button variant="primary" type="button"
                                             style={{borderRadius: 36, fontFamily: "monospace"}}
                                             onClick={() => {
-                                                if (user.email != undefined) {
+                                                if (user?.email != undefined) {
                                                     setIsShowModal(true)
                                                 } else {
                                                     setIsShowNoti(true);
@@ -462,7 +462,7 @@ export default function DictionaryTab({user, selectedTab}) {
                                 {/*{user.email != null ? `Added ${wordToAdd?.word} to your personal dictionary` :*/}
                                 {/*    `Login to use this function`*/}
                                 {/*}*/}
-                                {user.email == null ? `Login to use this function` : updateNoti ?
+                                {user?.email == null ? `Login to use this function` : updateNoti ?
                                     "Your word is updated" : removeNoti ? "Your word is removed" : `Added ${wordToAdd?.word} to your personal dictionary`
                                 }
 

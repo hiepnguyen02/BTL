@@ -7,7 +7,7 @@ import {EventKey} from "@restart/ui/types";
 export const translateService = async (content: string | null,
                                        from: EventKey,
                                        to: EventKey,
-                                       setResult: React.Dispatch<React.SetStateAction<[]>>,
+                                       setResult: React.Dispatch<React.SetStateAction<string | null>>,
                                        setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
                                        setError: React.Dispatch<React.SetStateAction<string | null>>
 ): Promise<void> => {
@@ -16,7 +16,7 @@ export const translateService = async (content: string | null,
     try {
         if (content != null && content != "") {
             const response = await translateRepository(content, from, to);
-            setResult(response);
+            setResult(response.toString());
             setIsLoading(false);
 
         } else {

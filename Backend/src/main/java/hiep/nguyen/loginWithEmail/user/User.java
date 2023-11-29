@@ -1,9 +1,12 @@
 package hiep.nguyen.loginWithEmail.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hiep.nguyen.loginWithEmail.entity.Bookmark;
+import hiep.nguyen.loginWithEmail.entity.FlashCard;
 import hiep.nguyen.loginWithEmail.entity.PersonalDictionary;
+import hiep.nguyen.loginWithEmail.entity.Word;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -40,6 +44,17 @@ public class User implements UserDetails {
     @JoinColumn(name = "bookmark_id", referencedColumnName = "id")
     @JsonIgnoreProperties("user")
     private Bookmark bookmark;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "userList")
+    private List<FlashCard> flashCardList = new ArrayList<>();
+
+    public List<FlashCard> getFlashCardList() {
+        return flashCardList;
+    }
+
+    public void setFlashCardList(List<FlashCard> flashCardList) {
+        this.flashCardList = flashCardList;
+    }
 
     public User(User user) {
         this.id = user.id;

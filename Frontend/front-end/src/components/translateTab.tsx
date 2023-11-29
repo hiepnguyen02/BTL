@@ -15,9 +15,8 @@ import {EventKey} from "@restart/ui/types";
 import {translateService} from "@/service/TranslateService/translateService";
 
 export default function TranslateTab() {
-    const [searchValue, setSearchValue] = useState<string>("");
     const [error, setError] = useState<string | null>("");
-    const [result, setResult] = useState<[]>([]);
+    const [result, setResult] = useState<string | null>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [from, setFrom] = useState<EventKey>("fromEng");
     const [to, setTo] = useState<EventKey>("toVi");
@@ -37,10 +36,22 @@ export default function TranslateTab() {
 
     const handleInputChange = (event: any) => {
         const newValue = event.target.value;
-        setTranslateValue(newValue);
-        debouncedTranslate(newValue);
+        setTranslateValue(event.target.value);
+        // debouncedTranslate(newValue);
 
     };
+    useEffect(() => {
+        translateService(translateValue, from, to, setResult, setIsLoading, setError);
+        // debounce(async () => {
+        //
+        //     try {
+        //
+        //     } catch (error) {
+        //     }
+        // }, 300)
+
+    }, [translateValue]);
+
     return (
         <>
             <Container className={"mt-4 justify-content-center"}>
@@ -62,6 +73,10 @@ export default function TranslateTab() {
                                                   onClick={() => {
                                                       setTo("toVi");
                                                       setFrom("fromEng");
+                                                      if (from == "fromVi") {
+                                                          setTranslateValue(result);
+                                                      }
+
                                                   }}
                                         >English</Nav.Link>
                                     </Nav.Item>
@@ -70,6 +85,9 @@ export default function TranslateTab() {
                                                   onClick={() => {
                                                       setTo("toEng");
                                                       setFrom("fromVi");
+                                                      if (from == "fromEng") {
+                                                          setTranslateValue(result);
+                                                      }
                                                   }}
                                         >Tiếng
                                             Việt</Nav.Link>
@@ -89,11 +107,16 @@ export default function TranslateTab() {
                         }} className={"mt-4"}>
                             <Col>
                                 <Form.Control
-                                    style={{border: "none", paddingLeft: 0, backgroundColor: "transparent"}}
-                                    className={"shadow-none"}
+                                    style={{
+                                        border: "none",
+                                        paddingLeft: 0,
+                                        backgroundColor: "transparent"
+                                    }}
+                                    className={"shadow-none h-100"}
                                     placeholder={"Type here to translate!"}
                                     value={translateValue}
                                     onChange={(value) => handleInputChange(value)}
+                                    as="textarea"
                                 />
 
                             </Col>
@@ -112,6 +135,9 @@ export default function TranslateTab() {
                                                   onClick={() => {
                                                       setTo("toEng");
                                                       setFrom("fromVi");
+                                                      if (from == "fromEng") {
+                                                          setTranslateValue(result);
+                                                      }
                                                   }}
                                         >English</Nav.Link>
                                     </Nav.Item>
@@ -120,6 +146,9 @@ export default function TranslateTab() {
                                                   onClick={() => {
                                                       setTo("toVi");
                                                       setFrom("fromEng");
+                                                      if (from == "fromVi") {
+                                                          setTranslateValue(result);
+                                                      }
                                                   }}
                                         >Tiếng
                                             Việt</Nav.Link>

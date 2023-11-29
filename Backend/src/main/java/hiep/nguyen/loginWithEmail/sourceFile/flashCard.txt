@@ -1,0 +1,369 @@
+1. Nghề nghiệp
+	•	Artist (n): /ˈɑːr.tɪst/ - Nghệ sĩ.
+	•	Astronaut (n): /ˈæs.trə.nɑːt/ - Phi hành gia.
+	•	Baker (n): /ˈbeɪ.kər/ - Thợ làm bánh.
+	•	Butcher (n): /ˈbʊtʃ.ər/ - Người mổ thịt.
+	•	Cashier (n): /kæʃˈɪr/ - Nhân viên thu ngân.
+	•	Chef (n): /ʃef/ - Đầu bếp.
+	•	Comedian (n): /kəˈmiː.di.ən/ - Diễn viên hài.
+	•	Delivery Man (n): /dɪˈlɪv.ər.i mæn/ - Nhân viên giao hàng.
+	•	Doctor (n): /ˈdɑːk.tər/ - Bác sĩ.
+	•	Entrepreneur (n): /ˌɑːn.trə.prəˈnɝː/ - Nhà kinh doanh.
+	•	Engineer (n): /ˌɛn.dʒɪˈnɪr/ - Kỹ sư.
+	•	Factory Worker (n): /ˈfæk.tər.i ˈwɝː.kər/ - Công nhân nhà máy.
+	•	Office Worker (n): /ˈɔː.fɪs ˈwɝː.kər/ - Nhân viên văn phòng.
+	•	Florist (n): /ˈflɔːr.ɪst/ - Người bán hoa.
+	•	Hairdresser (n): /ˈherˌdrɛs.ər/ - Thợ cắt tóc.
+	•	Lawyer (n): /ˈlɔɪ.ər/ - Luật sư.
+	•	Musician (n): /mjuˈzɪʃ.ən/ - Nhạc sĩ, nhạc công.
+	•	Pharmacist (n): /ˈfɑːr.mə.sɪst/ - Dược sĩ.
+	•	Plumber (n): /ˈplʌm.bər/ - Thợ ống nước.
+	•	Politician (n): /ˌpɑː.ləˈtɪʃ.ən/ - Chính trị gia.
+	•	Programmer (n): /ˈproʊ.ɡræm.ər/ - Lập trình viên.
+	•	Real Estate Agent (n): /ˈriː.əl ɪˌsteɪt ˈeɪ.dʒənt/ - Người môi giới bất động sản.
+	•	Tailor (n): /ˈteɪ.lɚ/ - Thợ may.
+	•	Taxi Driver (n): /ˈtæk.si ˌdraɪ.vər/ - Tài xế xe taxi.
+	•	Teacher (n): /ˈtiː.tʃər/ - Giáo viên.
+	•	Receptionist (n): /rɪˈsɛp.ʃən.ɪst/ - Nhân viên lễ tân, tiếp tân.
+	•	Singer (n): /ˈsɪŋ.ər/ - Ca sĩ.
+2. Gia đình
+	•	Family (n): /ˈfæm.əl.i/ - Gia đình.
+	•	Mother (n): /ˈmʌð.ər/ - Mẹ.
+	•	Father (n): /ˈfɑː.ðər/ - Bố, cha.
+	•	Daughter (n): /ˈdɔː.t̬ər/ - Con gái.
+	•	Son (n): /sʌn/ - Con trai.
+	•	Sibling (n): /ˈsɪb.lɪŋ/ - Anh chị em ruột.
+	•	Sister (n): /ˈsɪs.tər/ - Chị, em gái.
+	•	Brother (n): /ˈbrʌð.ər/ - Anh, em trai.
+	•	Grandmother (n): /ˈɡrænˌmʌð.ər/ - Bà nội (ngoại).
+	•	Grandfather (n): /ˈɡrænˌfɑː.ðər/ - Ông nội (ngoại).
+	•	Relative (n): /ˈrel.ə.tɪv/ - Họ hàng.
+	•	Aunt (n): /ænt/ - Cô, dì.
+	•	Uncle (n): /ˈʌŋ.kəl/ - Chú, bác, cậu, dượng.
+	•	Cousin (n): /ˈkʌz.ən/ - Anh em họ.
+	•	Nephew (n): /ˈnef.juː/ - Cháu trai (con của anh chị em).
+	•	Niece (n): /niːs/ - Cháu gái (con của anh chị em).
+	•	Wife (n): /waɪf/ - Vợ.
+	•	Husband (n): /ˈhʌz.bənd/ - Chồng.
+3. Màu sắc
+	•	White (n, adj): /waɪt/ - Màu trắng.
+	•	Black (n, adj): /blæk/ - Màu đen.
+	•	Red (n, adj): /rɛd/ - Màu đỏ.
+	•	Orange (n): /ˈɔːr.ɪndʒ/ - Màu cam.
+	•	Yellow (n, adj): /ˈjel.oʊ/ - Màu vàng.
+	•	Green (n, adj): /ɡriːn/ - Màu xanh lá cây.
+	•	Blue (n, adj): /bluː/ - Màu xanh lam, xanh nước biển.
+	•	Violet (n): /ˈvaɪəlɪt/ - Màu tím.
+	•	Purple (n, adj): /ˈpɝː.pəl/ - Màu tía.
+	•	Beige (n, adj): /beɪʒ/ - Màu be.
+	•	Pink (n): /pɪŋk/ - Màu hồng.
+	•	Gray (n, adj): /ɡreɪ/ - Màu xám.
+	•	Brown (n, adj): /braʊn/ - Màu nâu.
+	•	Silver (n, adj): /ˈsɪl.vɚ/ - Màu bạc.
+	•	Indigo (n, adj): /ˈɪn.dɪ.ɡoʊ/ - Màu chàm.
+	•	Navy (n, adj): /ˈneɪ·vi (ˈbluː)/ - Màu xanh tím than.
+	•	Ivory (n, adj): /ˈaɪ.vər.i/ - Màu trắng ngà.
+	•	Coral (n, adj): /ˈkɔːr.əl/ - Màu hồng san hô.
+	•	Teal (n, adj): /tiːl/ - Màu xanh mòng két (xanh lam pha xanh lục đậm).
+	•	Blond (n, adj): /blɑnd/ - Màu vàng hoe. (thường ám chỉ màu tóc của người có tóc vàng hoe)
+4. Cơ thể người
+	•	Ankle (n): /ˈæŋ.kəl/ - Mắt cá chân.
+	•	Arm (n): /ɑːrm/ - Cánh tay.
+	•	Armpit (n): /ˈɑːrm.pɪt/ - Nách.
+	•	Beard (n): /bɪrd/ - Râu.
+	•	Breast (n): /brest/ - Ngực, vú (phụ nữ).
+	•	Calf (n): /kæf/ - Bắp chân.
+	•	Cheek (n): /tʃiːk/ - Má.
+	•	Chest (n): /tʃest/ - Ngực (chung).
+	•	Chin (n): /tʃɪn/ - Cằm.
+	•	Earlobe (n): /ˈɪr.loʊb/ - Dái tai.
+	•	Elbow (n): /ˈel.boʊ/ - Khuỷu tay.
+	•	Eyebrow (n): /ˈaɪ.braʊ/ - Lông mày.
+	•	Eyelash (n): /ˈaɪ.læʃ/ - Lông mi.
+	•	Eyelid (n): /ˈaɪ.lɪd/ - Mí mắt.
+	•	Face (n): /feɪs/ - Gương mặt.
+	•	Finger (n): /ˈfɪŋ.ɡɚ/ - Ngón tay.
+	•	Forearm (n): /ˈfɔːr.ɑːrm/ - Cẳng tay.
+	•	Forehead (n): /ˈfɑː.rɪd/ - Trán.
+	•	Gum (n): /ɡʌm/ - Nướu, lợi.
+	•	Heel (n): /hiːl/ - Gót chân.
+	•	Hip (n): /hɪp/ - Hông.
+	•	Index Finger (n): /ˈɪn.deks ˌfɪŋ.ɡɚ/ - Ngón tay trỏ.
+	•	Jaw (n): /dʒɑː/ - Hàm, quai hàm.
+	•	Knee (n): /niː/ - Đầu gối.
+	•	Knuckle (n): /ˈnʌk.əl/ - Khớp đốt ngón tay (đặc biệt là đoạn nối giữa ngón tay và bàn tay).
+	•	Leg (n): /leɡ/ - Chân.
+	•	Lip (n): /lɪp/ - Môi.
+	•	Mouth (n): /maʊθ/ - Miệng.
+	•	Mustache (n): /ˈmʌs.tæʃ/ - Râu mép, ria.
+5. Tính cách
+	•	Active (adj): /ˈæk.tɪv/ - Năng nổ, lanh lợi.
+	•	Alert (adj): /əˈlɝːt/ - Tỉnh táo, cảnh giác.
+	•	Ambitious (adj): /æmˈbɪʃ.əs/ - Tham vọng.
+	•	Attentive (adj): /əˈten.t̬ɪv/ - Chăm chú, chú tâm.
+	•	Bold (adj): /boʊld/ - Táo bạo, mạo hiểm.
+	•	Brave (adj): /breɪv/ - Dũng cảm, gan dạ.
+	•	Careful (adj): /ˈker.fəl/ - Cẩn thận, thận trọng.
+	•	Careless (adj): /ˈker.ləs/ - Bất cẩn, cẩu thả.
+	•	Cautious (adj): /ˈkɑː.ʃəs/ - Thận trọng, cẩn thận.
+	•	Conscientious (adj): /ˌkɑːn.ʃiˈen.ʃəs/ - Chu đáo, tỉ mỉ.
+	•	Courageous (adj): /kəˈreɪ.dʒəs/ - Can đảm.
+	•	Crafty (adj): /ˈkræf.ti/ - Láu cá, xảo quyệt.
+	•	Cunning (adj): /ˈkʌn.ɪŋ/ - Xảo trá, khôn lỏi.
+	•	Deceitful (adj): /dɪˈsiːt.fəl/ - Dối trá.
+	•	Decent (adj): /ˈdiː.sənt/ - Lịch sự, tao nhã.
+	•	Dependable (adj): /dɪˈpen.də.bəl/ - Đáng tin cậy.
+	•	Determined (adj): /dɪˈtɝː.mɪnd/ - Quyết tâm.
+	•	Devoted (adj): /dɪˈvoʊ.t̬ɪd/ - Hết lòng, tận tâm, tận tụy.
+	•	Diligent (adj): /ˈdɪl.ə.dʒənt/ - Siêng năng, cần cù.
+	•	Disciplined (adj): /ˈdɪs.ə.plɪnd/ - Có tính kỷ luật.
+	•	Dishonest (adj): /dɪˈsɑː.nɪst/ - Bất lương, dối trá.
+	•	Disloyal (adj): /ˌdɪsˈlɔɪ.əl/ - Phản trắc, phản bội.
+	•	Energetic (adj): /ˌen.ɚˈdʒet̬.ɪk/ - Giàu năng lượng.
+	•	Fair (adj): /fer/ - Ngay thẳng.
+	•	Faithful (adj): /ˈfeɪθ.fəl/ - Trung thành, chung thủy.
+	•	Fearless (adj): /ˈfɪr.ləs/ - Bạo dạn.
+	•	Forgetful (adj): /fɚˈɡet.fəl/ - Hay quên.
+	•	Hard-headed (adj): /ˌhɑːrdˈhed.ɪd/ - Cứng đầu, ương ngạnh.
+	•	Hardworking (adj): /ˈhɑrdˈwɜr·kɪŋ/ - Chăm chỉ, chịu khó.
+	•	Hardy (adj): /ˈhɑːr.di/ - Táo bạo, gan dạ.
+	•	Honest (adj): /ˈɑː.nɪst/ - Chân thật, trung thành.
+	•	Idle (adj): /ˈaɪ.dəl/ - Nhàn rỗi, lười nhác.
+	•	Immature (adj): /ˌɪm.əˈtʊr/ - Non nớt, thiếu chín chắn.
+	•	Impartial (adj): /ɪmˈpɑːr.ʃəl/ - Trung lập, ngay thẳng.
+	•	Inattentive (adj): /ˌɪn.əˈten.t̬ɪv/ - Lơ đễnh, thiếu tập trung.
+	•	Independent (adj): /ˌɪn.dɪˈpen.dənt/ - Tự lập.
+	•	Inert (adj): /ˌɪnˈɝːt/ - Trì trệ, chậm chạp.
+	•	Insightful (adj): /ˈɪn.saɪt.fəl/ - Sâu sắc, sáng suốt.
+	•	Insincere (adj): /ˌɪn.sɪnˈsɪr/ - Không thành thực, giả dối.
+	•	Irrational (adj): /ɪˈræʃ.ən.əl/ - Không hợp lý.
+	•	Irresponsible (adj): /ˌɪr.əˈspɑːn.sə.bəl/ - Thiếu trách nhiệm.
+	•	Lazy (adj): /ˈleɪ.zi/ - Lười biếng.
+	•	Level-headed (adj): /ˌlev.əlˈhed.ɪd/ - Bình tĩnh, điềm đạm.
+	•	Loyal (adj): /ˈlɔɪ.əl/ - Trung thành, trung kiên.
+	•	Mature (adj): /məˈtʊr/ - Trưởng thành, chững chạc.
+	•	Methodical (adj): /məˈθɑː.dɪ.kəl/ - Ngăn
+6. Giáo dục
+	•	Assignment (n): /əˈsaɪn.mənt/ - Bài tập tiểu luận.
+	•	Boarding school (n): /ˈbɔːr.dɪŋ ˌskuːl/ - Trường nội trú.
+	•	Campus (n): /ˈkæm.pəs/ - Khu trường học, địa điểm trường học.
+	•	Co-education (n): /ˌkoʊ.edʒ.əˈkeɪ.ʃən/ - Nam nữ đồng giáo.
+	•	Concentrate (v): /ˈkɑːn.sən.treɪt/ - Tập trung.
+	•	Coursework (n): /ˈkɔːrs.wɝːk/ - Đồ án môn học.
+	•	Curriculum (n): /kəˈrɪk.jə.ləm/ - Chương trình giảng dạy.
+	•	Distance learning (n): /ˈdɪs.təns ˌlɝː.nɪŋ/ - Việc học từ xa, học trực tuyến.
+	•	Eager beaver (n): /ˌiː.ɡɚ ˈbiː.vɚ/ - Người chăm chỉ, tham việc.
+	•	Enroll (v): /ɪnˈrəʊl/ - Đăng ký.
+	•	Evaluation (n): /ɪˌvæl.juˈeɪ.ʃən/ - Sự đánh giá.
+	•	Fellowship (n): /ˈfel.oʊ.ʃɪp/ - Đội nhóm; học bổng nghiên cứu sinh.
+	•	Final (exam) (n): /ˈfɑɪ·nəl (iɡˈzæm)/ - Bài thi cuối kỳ.
+	•	Graduate (v): /ˈɡrædʒ.u.ət/ - Tốt nghiệp, ra trường.
+	•	Higher education (n): /ˌhaɪ.ɚ ed.jʊˈkeɪ.ʃən/ - Giáo dục cấp đại học.
+	•	Illiterate (n): /ɪˈlɪt̬.ɚ.ət/ - Mù chữ, thất học.
+	•	Institution (n): /ˌɪn.stəˈtuː.ʃən/ - Viện, cơ quan.
+	•	Internship (n): /ˈɪn.tɝːn.ʃɪp/ - Kỳ thực tập.
+	•	Kindergarten (n): /ˈkɪn.dɚˌɡɑːr.tən/ - Lớp mẫu giáo, nhà trẻ.
+	•	Lecture (n): /ˈlek.tʃɚ/ - Bài giảng, bài diễn thuyết.
+	•	Literacy (n): /ˈlɪt̬.ɚ.ə.si/ - Khả năng biết đọc và viết.
+	•	Material (n): /məˈtɪr.i.əl/ - Học liệu.
+	•	Physical education (n): /ˌfɪz.ɪ.kəl ed.jʊˈkeɪ.ʃən/ - Giáo dục thể chất.
+	•	Plagiarize (v): /ˈpleɪ.dʒə.raɪz/ - Đạo văn, sao chép.
+	•	Practice (n): /ˈpræk.tɪs/ - Bài luyện tập.
+	•	Premise (n): /ˈprem.ɪs/ - Giả thuyết, tiền đề.
+	•	Preschool (n, adj): /ˈpriː.skuːl/ - Trường mầm non.
+	•	Primary school (n): /ˈpraɪ.mɚ.i ˌskuːl/ - Trường tiểu học, trường cấp 1.
+	•	Private school (n): /ˌpraɪ.vət ˈskuːl/ - Trường tư.
+	•	Qualification (n): /ˌkwɑː.lə.fəˈkeɪ.ʃən/ - Năng lực, trình độ chuyên môn.
+	•	Secondary school (n): /ˈsek.ən.der.i ˌskuːl/ - Trường trung học, trường cấp 2.
+	•	Syllabus (n): /ˈsɪl.ə.bəs/ - Giáo trình.
+	•	Teacher’s pet (n): /ˌtiː.tʃɚz ˈpet/ - Học sinh cưng của giáo viên
+7. Đồ dùng học tập
+	•	Backpack (n): /ˈbæk.pæk/ - Ba lô, cặp đeo sau lưng.
+	•	Ballpoint pen (n): /ˌbɑːl.pɔɪnt ˈpen/ - Bút bi.
+	•	Beaker (n): /ˈbiː.kɚ/ - Cốc đong trong phòng thí nghiệm.
+	•	Binder (n): /ˈbaɪn.dɚ/ - Bìa rời.
+	•	Blackboard (n): /ˈblæk.bɔːrd/ - Bảng đen.
+	•	Book (n): /bʊk/ - Quyển sách.
+	•	Calculator (n): /ˈkæl.kjə.leɪ.t̬ɚ/ - Máy tính bỏ túi.
+	•	Chair (n): /tʃer/ - Ghế.
+	•	Clip (n): /klɪp/ - Kẹp ghim.
+	•	Clock (n): /klɑːk/ - Đồng hồ.
+	•	Compass (n): /ˈkʌm.pəs/ - La bàn.
+	•	Computer (n): /kəmˈpjuː.t̬ɚ/ - Máy tính để bàn.
+	•	Desk (n): /desk/ - Bàn học.
+	•	Eraser (n): /ɪˈreɪ.sɚ/ - Tẩy, gôm.
+	•	Funnel (n): /ˈfʌn.əl/ - Phễu.
+	•	Globe (n): /ɡloʊb/ - Quả địa cầu.
+	•	Glue (n): /ɡluː/ - Keo hồ.
+	•	Highlighter (n): /ˈhaɪˌlaɪ.t̬ɚ/ - Bút nhớ.
+	•	Magnifying glass (n): /ˈmæɡ.nə.faɪ.ɪŋ ˌɡlæs/ - Kính lúp.
+	•	Map (n): /mæp/ - Bản đồ.
+	•	Paint brush (n): /ˌbrɑːd ˈbrʌʃ/ - Cọ tô màu.
+	•	Paper (n): /ˈpeɪ.pɚ/ - Giấy.
+	•	Pin (n): /pɪn/ - Đinh ghim.
+	•	Protractor (n): /prəˈtræk.tɚ/ - Thước đo góc.
+	•	Scissors (n): /ˈsɪz.ɚz/ - Kéo.
+	•	Scotch tape (n): /ˌskɑːtʃ ˈteɪp/ - Băng keo.
+	•	Set square (n): /ˈset ˌskwer/ - Thước vuông, ê-ke.
+	•	Stapler (n): /ˈsteɪ.plɚ/ - Cái dập ghim.
+	•	Test tube (n): /ˈtest ˌtuːb/ - Ống thí nghiệm.
+8. Thiên nhiên
+	•	Animal (n): /ˈæn.ɪ.məl/ - Động vật, thú vật.
+	•	Arctic (n, adj): /ˈɑːrk.tɪk/ - Vùng Bắc Cực; (thuộc) Bắc Cực.
+	•	Atmosphere (n): /ˈæt.mə.sfɪr/ - Khí quyển.
+	•	Beach (n): /biːtʃ/ - Bãi biển.
+	•	Breezy (adj): /ˈbriː.zi/ - Gió thổi hiu mát.
+	•	Bush (n): /bʊʃ/ - Bụi cây, bụi rậm.
+	•	Cave (n): /keɪv/ - Hang động.
+	•	Cliff (n): /klɪf/ - Vách đá.
+	•	Coal (n): /koʊl/ - Than đá.
+	•	Creek (n): /kriːk/ - Lạch, nhánh sông, sông con.
+	•	Daisy (n): /ˈdeɪ.zi/ - Hoa cúc.
+	•	Deforestation (n): /diːˌfɔːr.əˈsteɪ.ʃən/ - Sự tàn phá rừng.
+	•	Desert (n): /ˈdez.ɚt/ - Sa mạc, hoang mạc.
+	•	Ecological (adj): /ˌiː.kəˈlɑː.dʒɪ.kəl/ - (Thuộc) sinh thái.
+	•	Environment (n): /ɪnˈvaɪ.rən.mənt/ - Môi trường.
+	•	Eruption (n): /ɪˈrʌp.ʃən/ - Sự phun trào (núi lửa).
+	•	Flood (n): /flʌd/ - Lũ lụt.
+	•	Flower (n): /ˈflaʊ.ɚ/ - Hoa.
+	•	Fossil (n, adj): /ˈfɑː.səl/ - Chất liệu hóa thạch; hóa thạch, hóa đá.
+	•	Gloomy (adj): /ˈɡluː.mi/ - Ư ám, ảm đạm.
+	•	Graze (v): /ɡreɪz/ - Thả (súc vật) ăn cỏ.
+	•	Herd (n): /hɝːd/ - Bầy, đàn (vật nuôi).
+	•	Highland (n): /ˈhaɪ.lənd/ - Cao nguyên.
+	•	Hurricane (n): /ˈhɝː.ɪ.keɪn/ - Bão.
+	•	Insect (n): /ˈɪn.sekt/ - Côn trùng, sâu bọ.
+	•	Livestock (n): /ˈlaɪv.stɑːk/ - Vật nuôi, thú nuôi.
+	•	Meadow (n): /ˈmed.oʊ/ - Đồng cỏ, bãi cỏ.
+	•	Misty (adj): /ˈmɪs.ti/ - Có sương mù.
+	•	Mountain (n): /ˈmaʊn.tən/ - Núi, dãy núi.
+	•	Mud (n): /mʌd/ - Bùn.
+	•	Overcast (v, adj): /ˈoʊ.vɚ.kæst/ - Mây phủ; tối sầm do mây phủ.
+	•	Peninsula (n): /pəˈnɪn.sə.lə/ - Bán đảo.
+	•	Petal (n): /ˈpet̬.əl/ - Cánh hoa.
+	•	Planet (n): /ˈplæn.ɪt/ - Hành tinh.
+	•	Pollution (n): /pəˈluː.ʃən/ - Ô nhiễm.
+	•	Pond (n): /pɑːnd/ - Ao nước.
+	•	River (n): /ˈrɪv.ɚ/ - Dòng sông.
+	•	Riverbank (n): /ˈrɪvəˌbæŋk/ - Bờ sông, bãi sông, vùng đất ven sông.
+	•	Root (n): /ruːt/ - Gốc, rễ cây.
+	•	Rubbish (n): /ˈrʌb.ɪʃ/ - Rác rưởi.
+	•	Savanna (n): /səˈvæn.ə/ - Hoang mạc, thảo nguyên.
+	•	Scenery (n): /ˈsiː.nɚ.i/ - Phong cảnh, cảnh vật.
+	•	Sea (n): /siː/ - Biển.
+	•	Season (n): /ˈsiː.zən/ - Mùa trong năm.
+	•	Seed (n): /siːd/ - Hạt giống.
+	•	Slaughter (n, v): /ˈslɑː.t̬ɚ/ - Sự giết mổ; giết mổ thịt.
+	•	Sleet (n, v): /sliːt/ - Mưa tuyết, mưa đá; trời mưa tuyết.
+	•	Slope (n): /sloʊp/ - Dốc.
+	•	Snowslide (n): /ˈsnōˌslīd/ - Tuyết lở.
+	•	Soil (n): /sɔɪl/ - Đất trồng, đất dai.
+	•	Solar (adj): /ˈsoʊ.lɚ/ - (Thuộc) mặt trời.
+	•	Sunshine (n): /ˈsʌn.ʃaɪn/ - Ánh sáng mặt trời, ánh nắng.
+	•	Sustainable (adj): /səˈsteɪ.nə.bəl/ - Bền vững.
+	•	Temperature (n): /ˈtem.pɚ.ə.tʃɚ/ - Nhiệt độ.
+	•	Tornado (n): /tɔːrˈneɪ.doʊ/ - Lốc xoáy.
+	•	Tsunami (n): /tsuːˈnɑː.mi/ - Sóng thần.
+	•	Valley (n): /ˈvæl.i/ - Thung lũng, châu thổ, lưu vực.
+	•	Vapor (v): /ˈveɪ.pər/ - Bốc hơi.
+	•	Vivid (adj): /ˈvɪv.ɪd/ - Sống động, mãnh liệt.
+	•	Volcano (n): /vɑːlˈkeɪ.noʊ/ - Núi lửa.
+	•	Waterfall (n): /ˈwɑː.t̬ɚ.fɑːl/ - Thác nước.
+	•	Wild (n, adj): /waɪld/ - Thiên nhiên hoang dại; hoang dại.
+	•	Wildlife (n): /ˈwaɪld.laɪf/ - Sinh vật hoang dã, thiên nhiên hoang dã.
+	•	Winter (n): /ˈwɪn.t̬ɚ/ - Mùa đông.
+9. Động vật
+	•	Bald eagle (n): /ˌbɑːld ˈiː.ɡəl/ - Đại bàng trắng.
+	•	Bee (n): /biː/ - Con ong.
+	•	Blackbird (n): /ˈblæk.bɝːd/ - Chim két.
+	•	Cat (n): /kæt/ - Con mèo.
+	•	Chicken (n): /ˈtʃɪk.ɪn/ - Con gà.
+	•	Chimpanzee (n): /ˌtʃɪm.pænˈziː/ - Con tinh tinh.
+	•	Cow (n): /kaʊ/ - Con bò.
+	•	Coyote (n): /kaɪˈoʊ.t̬i/ - Chó sói đồng cỏ.
+	•	Crab (n): /kræb/ - Con cua.
+	•	Crow (n): /kroʊ/ - (Một loại) quạ.
+	•	Deer (n): /dɪr/ - Con hươu, nai.
+	•	Dog (n): /dɑːɡ/ - Con chó.
+	•	Dove (n): /dʌv/ - Chim bồ câu.
+	•	Duck (n): /dʌk/ - Con vịt.
+	•	Elephant (n): /ˈel.ə.fənt/ - Con voi.
+	•	Fish (n): /fɪʃ/ - Con cá.
+	•	Flamingo (n): /fləˈmɪŋ.ɡoʊ/ - Chim hồng hạc.
+	•	Fox (n): /fɑːks/ - Con cáo.
+	•	Giraffe (n): /dʒɪˈræf/ - Hươu cao cổ.
+	•	Goat (n): /ɡoʊt/ - Con dê.
+	•	Goldfish (n): /ˈɡoʊld.fɪʃ/ - Cá vàng.
+	•	Goose (n): /ɡuːs/ - Con ngỗng.
+	•	Hamster (n): /ˈhæm.stɚ/ - Chuột đồng.
+	•	Hawk (n): /hɑːk/ - Chim diều hâu.
+	•	Hedgehog (n): /ˈhedʒ.hɑːɡ/ - Con nhím.
+	•	Hippopotamus (n): /ˌhɪp.əˈpɑː.t̬ə.məs/ - Hà mã.
+	•	Horse (n): /hɔːrs/ - Con ngựa.
+	•	Kangaroo (n): /ˌkæŋ.ɡəˈruː/ - Chuột túi.
+	•	Kitten (n): /ˈkɪt̬.ən/ - Mèo con.
+	•	Koala (n): /koʊˈɑː.lə/ - Gấu túi.
+	•	Leopard (n): /ˈlep.ɚd/ - Con báo.
+	•	Lion (n): /ˈlaɪ.ən/ - Sư tử.
+	•	Mole (n): /moʊl/ - Chuột chũi.
+	•	Monkey (n): /ˈmʌŋ.ki/ - Con khỉ.
+	•	Mouse (n): /maʊs/ - Con chuột.
+	•	Ostrich (n): /ˈɑː.strɪtʃ/ - Đà điểu.
+	•	Otter (n): /ˈɑː.t̬ɚ/ - Rái cá.
+	•	Owl (n): /aʊl/ - Con cú.
+	•	Ox (n): /ɑːks/ - Con bò đực.
+	•	Panda (n): /ˈpæn.də/ - Gấu trúc.
+	•	Parrot (n): /ˈper.ət/ - Con vẹt.
+	•	Peacock (n): /ˈpiː.kɑːk/ - Con công.
+	•	Penguin (n): /ˈpeŋ.ɡwɪn/ - Chim cánh cụt.
+	•	Pig (n): /pɪɡ/ - Con lợn, heo.
+	•	Pigeon (n): /ˈpɪdʒ.ən/ - Chim bồ câu (lớn hơn).
+	•	Puppy (n): /ˈpʌp.i/ - Chó con.
+	•	Rabbit (n): /ˈræb.ɪt/ - Con thỏ.
+	•	Raven (n): /ˈreɪ.vən/ - (Một loại) quạ.
+	•	Robin (n): /ˌrɑː.bɪn-/ - Chim cổ đỏ.
+	•	Seagull (n): /ˈsiː.ɡʌl/ - Mòng biển, hải âu.
+	•	Sheep (n): /ʃiːp/ - Con cừu.
+	•	Shrimp (n): /ʃrɪmp/ - Con tôm.
+	•	Sparrow (n): /ˈsper.oʊ/ - Chim sẻ.
+	•	Squirrel (n): /ˈskwɝː.əl/ - Con sóc.
+	•	Stork (n): /stɔːrk/ - Con cò.
+	•	Swallow (n): /ˈswɑː.loʊ/ - Chim nhạn, én.
+	•	Swan (n): /swɑːn/ - Thiên nga.
+	•	Turkey (n): /ˈtɝː.ki/ - Con gà tây.
+	•	Turtle (n): /ˈtɝː.t̬əl/ - Con rùa.
+	•	Walrus (n): /ˈwɑːl.rəs/ - Hải mã.
+	•	Woodpecker (n): /ˈwʊdˌpek.ɚ/ - Chim gõ kiến.
+10. Giải trí
+	•	Activity (n): /ækˈtɪv.ə.t̬i/ - Hoạt động.
+	•	Art gallery (n): /ˈɑːrt ˌɡæl.ɚ.i/ - Phòng trưng bày tranh, bảo tàng nghệ thuật.
+	•	Ballet (n): /bælˈeɪ/ - Ba lê, kịch múa.
+	•	Bar (n): /bɑːr/ - Quán rượu, quầy bán rượu.
+	•	Bowling (n): /ˈboʊ.lɪŋ/ - Trò chơi lăn bóng, bowling.
+	•	Café (n): /kæfˈeɪ/ - Quán cà phê.
+	•	Cheat (n, v): /tʃiːt/ - Trò lừa đảo; gian lận, lừa đảo.
+	•	Cinema (n): /ˈsɪn.ə.mə/ - Rạp chiếu phim.
+	•	Circus (n): /ˈsɝː.kəs/ - Rạp xiếc.
+	•	Concert (n): /ˈkɑːn.sɚt/ - Buổi hòa nhạc.
+	•	Concert hall (n): /ˈkɑːn.sɚt ˌhɑːl/ - Phòng hòa nhạc.
+	•	Cosplay (n): /ˈkɑːz.pleɪ/ - Trò chơi hóa trang.
+	•	Dartboard (n): /ˈdɑːrt.bɔːrd/ - Tấm bia trong trò chơi phi tiêu.
+	•	Exhibition (n): /ˌek.səˈbɪʃ.ən/ - Buổi triển lãm, trưng bày.
+	•	Exhibition center (n): /ˌek.səˈbɪʃ.ən ˌsen.t̬ɚ/ - Hội chợ thương mại, trung tâm triển lãm.
+	•	Film (n): /fɪlm/ - Phim, phim ảnh.
+	•	Handcraft (n): /ˈhænd.kræft/ - Nghề thủ công, hoạt động thủ công.
+	•	Leisure centre (n): /ˈliː.ʒɚ ˌsen.t̬ɚ/ - Khu vui chơi, trung tâm giải trí.
+	•	Monopoly (n): /məˈnɑː.pəl.i/ - Trò chơi cờ tỷ phú.
+	•	Museum (n): /mjuːˈziː.əm/ - Bảo tàng.
+	•	Nightclub (n): /ˈnaɪt.klʌb/ - Hộp đêm.
+	•	Opera (n): /ˈɑː.pɚ.ə/ - Nhạc kịch.
+	•	Opera house (n): /ˈɑː.pɚ.ə ˌhaʊs/ - Nhà hát.
+	•	Play (n, v): /pleɪ/ - Sự vui đùa; vui chơi.
+	•	Pub (n): /pʌb/ - Nơi phục vụ đồ uống có cồn.
+	•	Puzzle (n): /ˈpʌz.əl/ - Trò chơi xếp hình.
+	•	Quiz (n): /kwɪz/ - Trò chơi đố vui.
+	•	Restaurant (n): /ˈres.tə.rɑːnt/ - Nhà hàng ăn uống.
+	•	Soft play (n): /ˌsɑːft ˈpleɪ/ - Trò chơi nhẹ nhàng dành cho trẻ em.
+	•	Stadium (n): /ˈsteɪ.di.əm/ - Sân vận động.
+	•	Theater (n): /ˈθiː.ə.t̬ɚ/ - Nhà hát, rạp hát.
+	•	Zoo (n): /zuː/ - Sở thú.

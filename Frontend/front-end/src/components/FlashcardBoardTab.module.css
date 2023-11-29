@@ -1,0 +1,15 @@
+.horizontalList {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px;
+}
+
+.horizontalList::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontalList > * {
+    scroll-snap-align: start;
+}
+

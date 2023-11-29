@@ -88,13 +88,16 @@ public class PuzzleBoard {
 
     private boolean checkColUsedPositions(int rowIndex, int colIndex, PersonalWordRequest word) {
         if (rowIndex + word.getWord().length() >= 8) {
+
             return true;
         }
         for (int k = 0; k < word.getWord().length(); k++) {
             if (board.get(rowIndex + k).get(colIndex).getValue() != '.') {
+                System.out.println("end---- not enough space " + word.getWord().length() + " " + rowIndex + " " + colIndex);
                 return true;
             }
         }
+
         return false;
     }
 
@@ -107,6 +110,7 @@ public class PuzzleBoard {
             }
             board.add(row);
         }
+
         Random random = new Random();
         for (PersonalWordRequest word : wordList) {
             int orientation = random.nextInt(2);
@@ -145,6 +149,7 @@ public class PuzzleBoard {
                 }
             }
         }
+
         for (int i = 0; i < 8; i++) {
             List<PuzzleElement> row = new ArrayList<>();
             for (int j = 0; j < 8; j++) {

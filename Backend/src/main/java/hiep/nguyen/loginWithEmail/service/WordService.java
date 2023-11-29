@@ -2,6 +2,7 @@ package hiep.nguyen.loginWithEmail.service;
 
 import hiep.nguyen.loginWithEmail.controller.PersonalWordController.PersonalWordRequest;
 import hiep.nguyen.loginWithEmail.entity.*;
+import hiep.nguyen.loginWithEmail.repository.FlashcardRepository;
 import hiep.nguyen.loginWithEmail.repository.PersonalDictionaryRepository;
 import hiep.nguyen.loginWithEmail.repository.WordRepository;
 import hiep.nguyen.loginWithEmail.user.User;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Service
 public class WordService {
@@ -24,12 +27,14 @@ public class WordService {
     private final UserService userService;
     private final PersonalDictionaryRepository personalDictionaryRepository;
 
+
     @Autowired
-    public WordService(WordRepository wordRepository, UserService userService, PersonalDictionaryService dictionaryService, PersonalDictionaryRepository personalDictionaryRepository) {
+    public WordService(WordRepository wordRepository, UserService userService, PersonalDictionaryService dictionaryService, PersonalDictionaryRepository personalDictionaryRepository, FlashcardRepository flashcardRepository) {
         this.wordRepository = wordRepository;
         this.userService = userService;
 
         this.personalDictionaryRepository = personalDictionaryRepository;
+
     }
 
     public Word createWord(Word word) {
