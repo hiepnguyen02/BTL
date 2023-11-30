@@ -49,3 +49,16 @@
     transform: scale(1.5);
 
 }
+
+.speaker {
+    background-color: lightpink !important;
+    border: 0;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.speaker:hover {
+
+    border: 0;
+    transform: scale(1.2);
+}

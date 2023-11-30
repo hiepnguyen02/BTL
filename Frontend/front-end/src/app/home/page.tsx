@@ -72,6 +72,7 @@ export default function Page() {
                            borderRadius: 30,
                            height: "100vh",
 
+
                        }}>
                 <Row>
                     <Col md={9}>
@@ -184,25 +185,7 @@ export default function Page() {
                                                 <img src={puzzleIcon.src} style={{width: 30, marginRight: 10}}/>
                                                 Puzzle Game</Nav.Link>
                                         </Nav.Item>
-                                        <Nav.Item>
-                                            <Nav.Link eventKey="setting"
-                                                      style={selectedItem != "setting" ? {
-                                                          fontSize: 18,
-                                                          fontFamily: "monospace",
-                                                          color: "black",
 
-
-                                                      } : {
-                                                          fontSize: 18,
-                                                          fontFamily: "monospace",
-                                                          backgroundColor: "pink",
-                                                          color: "black",
-                                                          fontWeight: "bolder"
-
-                                                      }}>
-                                                <img src={settingsIcon.src} style={{width: 30, marginRight: 10}}/>
-                                                Settings</Nav.Link>
-                                        </Nav.Item>
 
                                     </Nav>
                                 </Col>
@@ -215,7 +198,7 @@ export default function Page() {
                                         <Tab.Pane eventKey="bookmark"><BookmarkTab user={user}
                                                                                    selectedTab={selectedItem}/></Tab.Pane>
                                         <Tab.Pane eventKey="puzzleGame"><PuzzleGameTab user={user}/></Tab.Pane>
-                                        <Tab.Pane eventKey="setting">Second tab content</Tab.Pane>
+                                      
                                     </Tab.Content>
                                 </Col>
                             </Row>

@@ -2,7 +2,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import {Button, Col, ListGroup, ProgressBar} from "react-bootstrap";
+import {Alert, Button, Col, ListGroup, ProgressBar} from "react-bootstrap";
 import {PuzzleBoard} from "@/types/game/PuzzleBoard";
 import {addToBookmarkFromPuzzle, checkService, generateBoardService} from "@/service/PuzzleService/puzzleGameService";
 import PuzzleComponent from "@/components/puzzleGameElement";
@@ -261,7 +261,7 @@ const PuzzleGameTab: React.FC<PuzzleGameProps> = ({user}) => {
                                 </Button></Col>
                         </Row> : null}
 
-                </> : !isShowWordList ? <>
+                </> : !isShowWordList ? user ? <>
                     <Row className={"mt-3"}>
                         <Col style={{
                             borderRadius: 18, fontFamily: "monospace",
@@ -317,7 +317,11 @@ const PuzzleGameTab: React.FC<PuzzleGameProps> = ({user}) => {
                     </Row>
 
 
-                </> : null
+                </> : <Row className={"m-5 text-center"}>
+                    <Alert variant={"success"} style={{borderRadius: 12}}>
+                        Please login to use this function!
+                    </Alert>
+                </Row> : null
             }
 
 

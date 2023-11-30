@@ -73,7 +73,7 @@ export default function DictionaryTab({user, selectedTab}) {
     const debouncedSearch = useCallback(
         debounce(async (value) => {
             try {
-                user.email ? searchWordUserService(value, setResult, setIsLoading, setError) :
+                user?.email ? searchWordUserService(value, setResult, setIsLoading, setError) :
                     searchWordService(value, setResult, setIsLoading, setError)
             } catch (error) {
             }

@@ -10,6 +10,7 @@ import unCheckedIcon from '../img/flashcard/check-2.png'
 import {TopicCard} from "@/types/Flashcardd/TopicCard";
 import {FlashcardBoard} from "@/types/Flashcardd/FlashcardBoard";
 import {addFlashcard, removeFlashcard} from "@/repository/FlashcardRepository/flashcardRepository";
+import speakerIcon from "@/img/home/marketing.png";
 
 
 interface FlashcardProps {
@@ -25,6 +26,7 @@ const Flashcard: React.FC<FlashcardProps> = ({flashcard, setFlashcardBoard}) => 
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
     };
+    const synthesis = window.speechSynthesis;
 
     return (
         <FlipMove>
@@ -63,6 +65,19 @@ const Flashcard: React.FC<FlashcardProps> = ({flashcard, setFlashcardBoard}) => 
 
                                 }}>
                                     {flashcard.pronunciation}
+                                </Col>
+                            </Row>
+                            <Row className={"mt-3 justify-content-center"}>
+                                <Col xs="auto">
+                                    <Button className={styles.speaker}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                const utterance = new SpeechSynthesisUtterance(flashcard.word);
+                                                synthesis.speak(utterance);
+                                            }}
+                                    >
+                                        <img src={speakerIcon.src} style={{width: 40, margin: 0}}/>
+                                    </Button>
                                 </Col>
                             </Row>
                             <Row className={"mt-3 justify-content-center"}>

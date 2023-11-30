@@ -3,12 +3,15 @@ import React, {useCallback, useEffect, useState} from "react";
 import Container from "react-bootstrap/Container";
 import {FlashcardBoard} from "@/types/Flashcardd/FlashcardBoard";
 import Row from "react-bootstrap/Row";
-import {Button, Carousel, Col, ProgressBar} from "react-bootstrap";
+import {Alert, Button, Carousel, Col, ProgressBar} from "react-bootstrap";
 import TopicElement from "@/components/TopicElement";
 import {getFlashcardBoard} from "@/repository/FlashcardRepository/flashcardRepository";
 
 import {TopicCard} from "@/types/Flashcardd/TopicCard";
 import Flashcard from "@/components/Flashcard";
+import {inspect} from "util";
+import styles from './FlashcardBoardTab.module.css'
+import BlinkText from "@/components/BlinkText";
 
 
 interface FlashcardBoardProps {
@@ -21,11 +24,6 @@ const FlashcardBoardTab: React.FC<FlashcardBoardProps> = ({user}) => {
     const [islearning, setIslearning] = useState(false);
     const synthesis = window.speechSynthesis;
     const [index, setIndex] = useState(0);
-    useEffect(() => {
-        return () => {
-
-        };
-    }, [flashcardBoard]);
 
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
@@ -33,11 +31,14 @@ const FlashcardBoardTab: React.FC<FlashcardBoardProps> = ({user}) => {
 
     useEffect(() => {
         return () => {
-            getFlashcardBoard().then((value) => {
-                setFlashcardBoard(value);
-            })
+            if (user?.email != null) {
+                getFlashcardBoard().then((value) => {
+                    setFlashcardBoard(value);
+                })
+            }
+
         };
-    }, []);
+    }, [user]);
 
 
     return (
@@ -46,7 +47,7 @@ const FlashcardBoardTab: React.FC<FlashcardBoardProps> = ({user}) => {
                 <Col xs="auto" className={"fw-bolder font-monospace "} style={{fontSize: 28}}>
                     Dashboard
                 </Col>
-                <Col>
+                {user?.email ? <Col>
                     <Row className={"align-items-center"}>
                         <Col>
                             <ProgressBar
@@ -55,22 +56,18 @@ const FlashcardBoardTab: React.FC<FlashcardBoardProps> = ({user}) => {
                                 style={{height: 10, transition: 'width 0.1s ease-in-out'}}
                             />
                         </Col>
-                        <Col style={{
-                            borderRadius: 18, fontFamily: "monospace",
-                            fontWeight: "bolder",
-                            fontSize: 16,
-                            fontStyle: "italic"
-                        }}>
-                            Total: {Math.round(flashcardBoard?.completedPercent * 100 * 100) / 100}% completed!
-                        </Col>
+                        <BlinkText value={flashcardBoard?.completedPercent}/>
+
 
                     </Row>
 
 
-                </Col>
+                </Col> : null}
+
 
             </Row>
-            <Container style={{overflowY: "scroll", maxHeight: "80vh", justifyContent: "center", alignItems: "center"}}>
+            {user?.email ? <Container
+                style={{overflowY: "scroll", maxHeight: "80vh", justifyContent: "center", alignItems: "center"}}>
                 {
                     chosenTopic == undefined ? <Row className={"mt-3 justify-content-center "}>
                             <Row xs={3} className={"justify-content-start "}>
@@ -134,7 +131,12 @@ const FlashcardBoardTab: React.FC<FlashcardBoardProps> = ({user}) => {
                 }
 
 
-            </Container>
+            </Container> : <Row className={"m-5 text-center"}>
+                <Alert variant={"success"} style={{borderRadius: 12}}>
+                    Please login to use this function!
+                </Alert>
+            </Row>}
+
         </Container>
     )
 

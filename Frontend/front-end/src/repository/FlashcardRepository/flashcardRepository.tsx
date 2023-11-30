@@ -3,6 +3,7 @@ import Config from "@/repository/config";
 import {FlashcardBoard} from "@/types/Flashcardd/FlashcardBoard";
 
 export const getFlashcardBoard = async (): Promise<FlashcardBoard> => {
+
     try {
         const token = localStorage.getItem(config.JWT_COOKIE_NAME);
         const response = await fetch(`${Config.API_URL}/user/flashcard/get`, {
@@ -12,11 +13,11 @@ export const getFlashcardBoard = async (): Promise<FlashcardBoard> => {
                 Authorization: `Bearer ${token}`,
             }
         });
-        if (!response.ok) {
-            throw new Error("Error");
+        if (response.ok) {
+            const result = await response.json();
+            return result;
         }
-        const result = await response.json();
-        return result;
+
     } catch (e) {
         throw e;
     }

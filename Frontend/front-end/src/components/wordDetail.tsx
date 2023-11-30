@@ -63,7 +63,7 @@ export default function WordDetail({
 
 
     useEffect(() => {
-        if (selectedTab == 'dictionary') {
+        if (selectedTab == 'dictionary' && user?.email != undefined) {
             getWordService(chosenWord.id).then((e) => {
                 setChosenWord(e);
             })
@@ -160,7 +160,7 @@ export default function WordDetail({
                                 </Button></Col>
                                 <Col><Button className={styles.edit}
                                              onClick={() => {
-                                                 if (!chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email)) {
+                                                 if (!chosenWord.bookmarkList?.some(bookmark => bookmark.user.email === user.email)) {
                                                      handleAddWordToBookmark();
                                                  } else {
                                                      handleDeleteWordFromBookmark();
@@ -168,7 +168,7 @@ export default function WordDetail({
                                              }}
                                 >
                                     {
-                                        chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email) ?
+                                        chosenWord.bookmarkList?.some(bookmark => bookmark.user.email === user.email) ?
                                             <img src={addedBookmarkIcon.src}
                                                  style={{width: 40, margin: 0,}}
                                             /> : <img src={bookmarkIcon.src} style={{width: 40, margin: 0}}
@@ -180,12 +180,12 @@ export default function WordDetail({
                             </Row>
 
 
-                        </Col> : <Col xs={1}>
+                        </Col> : user?.email != undefined ? <Col xs={1}>
                             <Row className={"justify-content-end"}>
                                 <Col xs={"auto"} className={"p-0"}>
                                     <Button className={styles.edit}
                                             onClick={() => {
-                                                if (!chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email)) {
+                                                if (!chosenWord.bookmarkList?.some(bookmark => bookmark.user.email === user.email)) {
                                                     handleAddWordToBookmark();
                                                 } else {
                                                     handleDeleteWordFromBookmark();
@@ -194,7 +194,7 @@ export default function WordDetail({
                                             }}
                                     >
                                         {
-                                            chosenWord.bookmarkList.some(bookmark => bookmark.user.email === user.email) ?
+                                            chosenWord.bookmarkList?.some(bookmark => bookmark.user.email === user.email) ?
                                                 <img src={addedBookmarkIcon.src} style={{width: 40, margin: 0}}
                                                 /> : <img src={bookmarkIcon.src} style={{width: 40, margin: 0}}
                                                 />
@@ -206,7 +206,7 @@ export default function WordDetail({
                                 </Col>
                             </Row>
 
-                        </Col>
+                        </Col> : null
                 }
             </Row>
 
