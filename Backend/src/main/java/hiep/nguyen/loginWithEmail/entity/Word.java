@@ -19,23 +19,23 @@ import java.util.List;
 public abstract class Word {
     @Id
     @GeneratedValue()
-    private long id;
-    private String word;
+    protected long id;
+    protected String word;
     @Column(columnDefinition = "TEXT")
-    private String define;
+    protected String define;
 
 
-    private String type;
+    protected String type;
     @ManyToOne
     @JoinColumn(name = "dictionary_id")
     @JsonIgnoreProperties("personalList")
-    private PersonalDictionary personalDictionary;
+    protected PersonalDictionary personalDictionary;
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "bookmark_words", joinColumns = @JoinColumn(name = "word_id"),
             inverseJoinColumns = @JoinColumn(name = "bookmark_id")
     )
     @JsonIgnore
-    private List<Bookmark> bookmarkList = new ArrayList<>();
+    protected List<Bookmark> bookmarkList = new ArrayList<>();
 
     public List<Bookmark> getBookmarkList() {
         return bookmarkList;
