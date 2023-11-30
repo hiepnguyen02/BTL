@@ -74,7 +74,7 @@ tại https://www.codejava.net/frameworks/spring-boot/connect-to-postgresql-data
 
 ##### 3.3 Database: PostgreSQL
 
-# 4. Cây ké thừa
+# 4. Cây kế thừa
 
 ![Screenshot 2023-11-30 at 16.04.44.png](Screenshot%202023-11-30%20at%2016.04.44.png)
 
